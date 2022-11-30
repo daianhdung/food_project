@@ -3,6 +3,7 @@ package com.example.food_project.controller;
 import com.example.food_project.entity.CategoryEntity;
 import com.example.food_project.entity.FoodEntity;
 import com.example.food_project.entity.RestaurantEntity;
+import com.example.food_project.payload.response.DataResponse;
 import com.example.food_project.services.CategoryService;
 import com.example.food_project.services.FoodService;
 import com.example.food_project.services.RestaurantService;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/category")
+@RequestMapping("/api/category")
 public class CategoryController {
 
     @Autowired
@@ -27,9 +28,13 @@ public class CategoryController {
     FoodService foodService;
 
     @GetMapping("")
-    public ResponseEntity<?> getExplorerCategory(){
+    public ResponseEntity<DataResponse> getExplorerCategory(){
         List<CategoryEntity> categoryEntities = categoryService.getExplorerCategory();
-        return new ResponseEntity<>(categoryEntities, HttpStatus.OK);
+        boolean isSuccess = categoryEntities.size() > 0;
+        DataResponse dataResponse = new DataResponse(200, isSuccess ? "Thành công" : "Rỗng",
+                categoryEntities, isSuccess);
+
+        return new ResponseEntity<>(dataResponse, HttpStatus.OK);
     }
 
 

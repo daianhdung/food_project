@@ -30,7 +30,6 @@ public class JwtTokenFilter extends OncePerRequestFilter {
         if(token != null){
             if(jwtTokenHelper.validaToken(token)){
                 //Token hợp lệ
-
                 String json = jwtTokenHelper.decodeToken(token);
                 Map<String, Object> map = gson.fromJson(json, Map.class);
                 System.out.println("Kiem tra" + json + " - " + map.get("type").toString());

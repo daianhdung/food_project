@@ -7,6 +7,15 @@ public class DataResponse {
     private Object data;
     private boolean isSuccess;
 
+    public DataResponse(int status, String desc, Object data, boolean isSuccess) {
+        this.status = status;
+        this.desc = desc;
+        this.data = data;
+        this.isSuccess = isSuccess;
+    }
+
+    public DataResponse(){}
+
     public int getStatus() {
         return status;
     }

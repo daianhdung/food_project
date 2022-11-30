@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/refresh-token")
+@RequestMapping("/api/refresh-token")
 public class RefreshTokenController {
     @Autowired
     JwtTokenHelper jwtTokenHelper;
