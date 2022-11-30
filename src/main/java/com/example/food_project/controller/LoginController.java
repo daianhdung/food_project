@@ -13,14 +13,25 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import java.util.Base64;
 
-@RestController
-@CrossOrigin
-@RequestMapping("/signin")
+import static com.example.food_project.constants.ViewConstant.*;
+
+
+@Controller
+@RequestMapping(SIGNIN_VIEW)
 public class LoginController {
+    @GetMapping()
+    public ModelAndView hello(){
+        return new ModelAndView("signin");
+    }
+
 
     @Autowired
     AuthenticationManager authenticationManager;
@@ -31,10 +42,6 @@ public class LoginController {
     @Autowired
     JwtTokenHelper jwtTokenHelper;
 
-    @GetMapping("/test")
-    public String text(){
-        return "Hello";
-    }
 
     //docblocks
     /**
@@ -43,6 +50,7 @@ public class LoginController {
      */
     private final long expiredDate = 8 * 60 * 60 * 1000;
     private final long refreshExpiredDate = 80 * 60 * 60 * 1000;
+
 
     @PostMapping("")
     public ResponseEntity<?> signIn(@RequestBody SignInRequest request){

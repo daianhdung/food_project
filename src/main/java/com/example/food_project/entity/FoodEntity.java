@@ -19,6 +19,7 @@ public class FoodEntity {
     @Column(name = "price")
     private int price;
 
+
     @ManyToOne()
     @JoinColumn(name = "id_category")
     private CategoryEntity category;
