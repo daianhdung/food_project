@@ -13,9 +13,12 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
 
-server:
-  servlet:
-    context-path: /api
+  thymeleaf:
+    cache: false
+    mode: HTML
+    encoding: UTF-8
+    prefix: file:src/main/resources/templates/
 
 file:
-  upload-dir: C:\Users\Tuan\Desktop\testfile
+    upload-dir: C:\Users\Tuan\Desktop\testfile
+

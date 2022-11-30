@@ -70,12 +70,12 @@ public class SecSecurityConfig implements AuthenticationProvider {
                 .disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-                .authorizeRequests()
-                .antMatchers("/signin").permitAll()
-                .antMatchers("/file/**").permitAll()
-                .antMatchers("/refresh-token").permitAll()
-                .antMatchers("/signin/test").authenticated()
-                .anyRequest().authenticated();
+                .authorizeRequests().anyRequest().permitAll();
+//                .antMatchers("/signin").permitAll()
+//                .antMatchers("/file/**").permitAll()
+//                .antMatchers("/refresh-token").permitAll()
+//                .antMatchers("/signin/test").authenticated()
+//                .anyRequest().authenticated();
 
         http.addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);
 
