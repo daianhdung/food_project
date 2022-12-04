@@ -1,5 +1,6 @@
 package com.example.food_project.security;
 
+//import com.example.food_project.jwt.JwtTokenFilter;
 import com.example.food_project.jwt.JwtTokenFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -20,12 +21,15 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
 import org.springframework.stereotype.Component;
+
+import static com.example.food_project.constants.ViewConstant.*;
 
 @Configuration
 @EnableWebSecurity
 @Component
-public class SecSecurityConfig implements AuthenticationProvider {
+public class SecSecurityConfig  implements AuthenticationProvider {
     //Dùng để khởi tạo danh sách user cứng và danh sách user này được lưu ở RAM
 //    @Bean
 //    public InMemoryUserDetailsManager userDetailsService(){
@@ -40,16 +44,22 @@ public class SecSecurityConfig implements AuthenticationProvider {
 //    }
 
     @Autowired
+    HttpSessionRequestCache httpSessionRequestCache;
+    @Autowired
     CustomAuthenticationProvider customAuthenticationProvider;
     @Autowired
     JwtTokenFilter jwtTokenFilter;
     @Bean
     AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
+        System.out.println("test");
         AuthenticationManagerBuilder authenticationManagerBuilder =
                 http.getSharedObject(AuthenticationManagerBuilder.class);
         authenticationManagerBuilder.authenticationProvider(customAuthenticationProvider);
+        System.out.println("Thành công");
         return authenticationManagerBuilder.build();
     }
+
+
 
     @Bean
     public PasswordEncoder passwordEncoder(){
@@ -65,18 +75,15 @@ public class SecSecurityConfig implements AuthenticationProvider {
         * permitAll: Cho phép truy cập full quyền vào link chỉ định ở antMatcher
         * anyRequest: Toàn bộ request gọi vào API
         */
-
         http.csrf()
                 .disable()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
-                .authorizeRequests().anyRequest().permitAll();
-//                .antMatchers("/signin").permitAll()
-//                .antMatchers("/file/**").permitAll()
-//                .antMatchers("/refresh-token").permitAll()
-//                .antMatchers("/signin/test").authenticated()
-//                .anyRequest().authenticated();
-
+                .requestCache().requestCache(httpSessionRequestCache).and()
+                .authorizeRequests()
+                .antMatchers("/font/**", "/img/**", "/css/**", "/js/**", "/vendor/**", "/signin",
+                        "/api/signin", "/api/file/**", "/api/refresh-token").permitAll()
+                .and().formLogin().loginPage(SIGNIN_VIEW).loginProcessingUrl(SIGNIN_VIEW)
+                .defaultSuccessUrl(HOME_VIEW).failureUrl(SIGNIN_VIEW + "?process=false")
+                        .permitAll().and().logout().invalidateHttpSession(true).clearAuthentication(true).permitAll();
         http.addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
@@ -92,5 +99,7 @@ public class SecSecurityConfig implements AuthenticationProvider {
     public boolean supports(Class<?> authentication) {
         return false;
     }
+
+
 }
 

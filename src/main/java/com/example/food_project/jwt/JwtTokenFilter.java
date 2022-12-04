@@ -31,6 +31,7 @@ public class JwtTokenFilter extends OncePerRequestFilter {
             if(jwtTokenHelper.validaToken(token)){
                 //Token hợp lệ
                 String json = jwtTokenHelper.decodeToken(token);
+                System.out.println("ko công 2");
                 Map<String, Object> map = gson.fromJson(json, Map.class);
                 System.out.println("Kiem tra" + json + " - " + map.get("type").toString());
                 if(StringUtils.hasText(map.get("type").toString()) && !map.get("type").toString().equals("refresh")){
@@ -45,13 +46,21 @@ public class JwtTokenFilter extends OncePerRequestFilter {
 
     private String getTokenFromHeader(HttpServletRequest request){
         //Lấy giá trị token ở header có key là Authorization
-        String strToken = request.getHeader("Authorization");
-        if(StringUtils.hasText(strToken) && strToken.startsWith("Bearer")){
-            //Xử lí khi token hợp lệ
-            //substring(): Dùng để cắt chuỗi
-            String finalToken = strToken.substring(7);
-            return finalToken;
+
+        if(request.getHeader("Authorization") != null){
+            String strToken = request.getHeader("Authorization") ;
+            System.out.println("ko công ?");
+            if(StringUtils.hasText(strToken) && strToken.startsWith("Bearer")){
+                //Xử lí khi token hợp lệ
+                //substring(): Dùng để cắt chuỗi
+                String finalToken = strToken.substring(7);
+                System.out.println("ko công 4");
+                return finalToken;
+            }else {
+                return null;
+            }
         }else {
+            System.out.println("ko công 7");
             return null;
         }
     }

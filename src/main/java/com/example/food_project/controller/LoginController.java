@@ -19,64 +19,25 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Base64;
 
 import static com.example.food_project.constants.ViewConstant.*;
 
 
 @Controller
-@RequestMapping(SIGNIN_VIEW)
+@CrossOrigin
+@RequestMapping()
 public class LoginController {
-    @GetMapping()
-    public ModelAndView hello(){
+    @GetMapping(SIGNIN_VIEW)
+    public ModelAndView login(HttpServletRequest request){
         return new ModelAndView("signin");
     }
 
-
-    @Autowired
-    AuthenticationManager authenticationManager;
-
-    @Autowired
-    LoginService loginService;
-
-    @Autowired
-    JwtTokenHelper jwtTokenHelper;
-
-
-    //docblocks
-    /**
-     * @param
-     * @return
-     */
-    private final long expiredDate = 8 * 60 * 60 * 1000;
-    private final long refreshExpiredDate = 80 * 60 * 60 * 1000;
-
-
-    @PostMapping("")
-    public ResponseEntity<?> signIn(@RequestBody SignInRequest request){
-//        boolean isSuccess = loginService.checkLogin(request.getUsername(), request.getPassword());
-        UsernamePasswordAuthenticationToken authRequest = new UsernamePasswordAuthenticationToken(
-                request.getUsername(),request.getPassword());
-        Authentication auth = authenticationManager.authenticate(authRequest);
-        SecurityContext securityContext = SecurityContextHolder.getContext();
-        securityContext.setAuthentication(auth);
-
-
-        //Generate token
-        String token = jwtTokenHelper.generateToken(request.getUsername(), "authen", expiredDate);
-        String refreshToken = jwtTokenHelper.generateToken(request.getUsername(), "refresh", refreshExpiredDate);
-//        String decodeToken = jwtTokenHelper.decodeToken(token);
-
-        DataTokenResponse dataTokenResponse = new DataTokenResponse();
-        dataTokenResponse.setToken(token);
-        dataTokenResponse.setRefreshToken(refreshToken);
-
-
-        DataResponse dataResponse = new DataResponse();
-        dataResponse.setData(HttpStatus.OK.value());
-        dataResponse.setSuccess(true);
-        dataResponse.setDesc("");
-        dataResponse.setData(dataTokenResponse);
-        return new ResponseEntity<>(dataResponse, HttpStatus.OK);
+    @GetMapping(HOME_VIEW)
+    public ModelAndView index(){
+        return new ModelAndView("index");
     }
+
+
 }

@@ -27,10 +27,13 @@ public class RestaurantController {
         return new ResponseEntity<>(restaurantEntity, HttpStatus.OK);
     }
 
+
     @GetMapping("/{id}")
     public ResponseEntity<?> getDetailFood(@PathVariable("id") int id){
         RestaurantDetailDTO detailDTO = restaurantService.getDetailRestaurant(id);
         return new ResponseEntity<>(detailDTO, HttpStatus.OK);
     }
+
+
 }
 

@@ -28,14 +28,15 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         String userName = authentication.getName();
         String password = authentication.getCredentials().toString();
         UserEntity userEntity = loginService.checkLogin(userName);
-
-
+        System.out.println("Thành công 1");
         if(userEntity != null){
             boolean isMatchPassword = passwordEncoder.matches(password, userEntity.getPassword());
             if(isMatchPassword){
+                System.out.println("Thành công 2");
                 return new UsernamePasswordAuthenticationToken(userEntity.getEmail(), userEntity.getPassword(), new ArrayList<>());
             }else {
-                return null;
+                System.out.println("ko công 1");
+                throw new Error();
             }
         }else {
             return null;
