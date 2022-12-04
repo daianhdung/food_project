@@ -4,15 +4,15 @@ $(document).ready(function(){
             username : $("#email").val(),
             password: $("#password").val()
         }
-    
+
         $.ajax({
             method: "POST",
             url: "http://localhost:8080/api/signin",
             contentType: "application/json; charset=utf-8",
-            data: JSON.stringify(data)
+            data: JSON.stringify(data),
           }).done(function( result ) {
                 if(result.success){
-                    window.location.href = "index.html";
+                    window.location.href = "/home";
                     console.log(result);
                 }else{
                     console.log(result);
@@ -21,4 +21,5 @@ $(document).ready(function(){
                 console.log(data)
         );
     })
+
 })
