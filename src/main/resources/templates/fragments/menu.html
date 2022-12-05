@@ -75,12 +75,28 @@
     <a href="explore.html" class="btn btn-primary btn-block btn-sm">Order now <i class="pl-3 fas fa-long-arrow-alt-right"></i></a>
   </div>
 
-  <div class="d-none d-md-block">
-    <div class="user d-flex align-items-center p-3">
+  <div th:switch="${signin}" class="d-none d-md-block">
+    <div th:case="true" style="cursor: pointer" class="user d-flex align-items-center p-3" >
+      <div class="pr-3"><i class="mdi mdi-account-circle-outline text-white h3 mb-0"></i></div>
+      <div >
+        <p class="mb-0 text-white" th:text="${client}"></p>
+        <p class="mb-0 text-white-50 small dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><a href="https://askbootstrap.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1a7f627b776a767f5a7d777b737634797577">[email&#160;protected]</a></p>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <a class="dropdown-item" th:href="@{/logout}">Logout</a>
+        </div>
+      </div>
+    </div>
+    <div th:case="false" style="cursor: pointer" class="user d-flex align-items-center p-3" >
       <div class="pr-3"><i class="mdi mdi-account-circle-outline text-white h3 mb-0"></i></div>
       <div>
-        <p class="mb-0 text-white">Mark Clarke</p>
-        <p class="mb-0 text-white-50 small"><a href="https://askbootstrap.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1a7f627b776a767f5a7d777b737634797577">[email&#160;protected]</a></p>
+        <div >
+          <a class="mb-0 text-white dropdown-toggle"  href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Chưa đăng nhập</a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" th:href="@{/signup}">Đăng kí</a>
+            <a class="dropdown-item" th:href="@{/signin}">Đăng nhập</a>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>

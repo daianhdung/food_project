@@ -26,21 +26,21 @@ public class JwtTokenFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        String token = getTokenFromHeader(request);
-        if(token != null){
-            if(jwtTokenHelper.validaToken(token)){
-                //Token hợp lệ
-                String json = jwtTokenHelper.decodeToken(token);
-                System.out.println("ko công 2");
-                Map<String, Object> map = gson.fromJson(json, Map.class);
-                System.out.println("Kiem tra" + json + " - " + map.get("type").toString());
-                if(StringUtils.hasText(map.get("type").toString()) && !map.get("type").toString().equals("refresh")){
-                    UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken("", "", new ArrayList<>());
-                    SecurityContext securityContext = SecurityContextHolder.getContext();
-                    securityContext.setAuthentication(authenticationToken);
-                }
-            }
-        }
+//        String token = getTokenFromHeader(request);
+//        if(token != null){
+//            if(jwtTokenHelper.validaToken(token)){
+//                //Token hợp lệ
+//                String json = jwtTokenHelper.decodeToken(token);
+//                System.out.println("ko công 2");
+//                Map<String, Object> map = gson.fromJson(json, Map.class);
+//                System.out.println("Kiem tra" + json + " - " + map.get("type").toString());
+//                if(StringUtils.hasText(map.get("type").toString()) && !map.get("type").toString().equals("refresh")){
+//                    UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken("", "", new ArrayList<>());
+//                    SecurityContext securityContext = SecurityContextHolder.getContext();
+//                    securityContext.setAuthentication(authenticationToken);
+//                }
+//            }
+//        }
         filterChain.doFilter(request, response);
     }
 
