@@ -22,6 +22,7 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.stereotype.Component;
 
 import static com.example.food_project.constants.ViewConstant.*;
@@ -81,9 +82,14 @@ public class SecSecurityConfig  implements AuthenticationProvider {
                 .authorizeRequests()
                 .antMatchers("/font/**", "/img/**", "/css/**", "/js/**", "/vendor/**", "/signin",
                         "/api/signin", "/api/file/**", "/api/refresh-token").permitAll()
+                .antMatchers("/home", "/", "/signup").permitAll()
+                .anyRequest().authenticated()
                 .and().formLogin().loginPage(SIGNIN_VIEW).loginProcessingUrl(SIGNIN_VIEW)
-                .defaultSuccessUrl(HOME_VIEW).failureUrl(SIGNIN_VIEW + "?process=false")
-                        .permitAll().and().logout().invalidateHttpSession(true).clearAuthentication(true).permitAll();
+                .defaultSuccessUrl(HOME_VIEW).failureUrl(SIGNIN_VIEW + "?error=true")
+                        .permitAll().and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl(SIGNIN_VIEW)
+                .invalidateHttpSession(true).clearAuthentication(true).permitAll()
+                .and().exceptionHandling().accessDeniedPage(SIGNIN_VIEW);
         http.addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();

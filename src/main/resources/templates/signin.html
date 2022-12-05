@@ -29,23 +29,23 @@
 <div class="col-lg-6 mx-auto">
 <h3 class="mb-1">Welcome</h3>
 <p class="mb-5">Sign in to your account to continue</p>
-<form>
+<form method="post">
 <div class="d-flex align-items-center mb-4">
 <div class="mr-3 bg-light rounded p-2 osahan-icon"><i class="mdi mdi-email-outline"></i></div>
 <div class="w-100">
 <p class="mb-0 small font-weight-bold text-dark">Email Address</p>
-<input id="email" type="email" class="form-control form-control-sm p-0 border-input border-0 rounded-0" placeholder="Enter Your Email">
+<input name="username" id="email" type="email" class="form-control form-control-sm p-0 border-input border-0 rounded-0" placeholder="Enter Your Email">
 </div>
 </div>
 <div class="d-flex align-items-center mb-4">
 <div class="mr-3 bg-light rounded p-2 osahan-icon"><i class="mdi mdi-form-textbox-password"></i></div>
 <div class="w-100">
 <p class="mb-0 small font-weight-bold text-dark">Password</p>
-<input id="password" type="password" class="form-control form-control-sm p-0 border-input border-0 rounded-0" placeholder="Enter Password">
+<input name="password" id="password" type="password" class="form-control form-control-sm p-0 border-input border-0 rounded-0" placeholder="Enter Password">
 </div>
 </div>
 <div class="mb-3">
-<a id="btn-signin" class="btn btn-primary btn-block mb-3">Sign in</a>
+<button type="submit" id="btn-signin" class="btn btn-primary btn-block mb-3">Sign in</button>
 <p class="text-center"><a href="forgot.html" class="text-dark">Forgot password?</a></p>
 <a href="signup.html" class="btn btn-light btn-block mb-2">Create an account</a>
 </div>

@@ -8,10 +8,6 @@ import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
 
 @Configuration
 public class ApplicationConfig {
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
 
     @Bean
     public HttpSessionRequestCache getHttpSessionRequestCache() {
