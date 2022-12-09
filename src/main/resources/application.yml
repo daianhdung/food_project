@@ -23,6 +23,21 @@ spring:
       cache:
         period: 0
 
+  mail:
+    host: smtp.gmail.com
+    username: fooddeliveryyyy@gmail.com
+    password: Fooddelivery112233#
+    port: 587
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
 file:
     upload-dir: C:\Users\Tuan\Desktop\testfile
+
+
+
 
