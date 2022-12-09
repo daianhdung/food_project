@@ -16,4 +16,9 @@ public class FoodServiceImp implements FoodService {
     public List<FoodEntity> get6Food() {
         return foodRepository.get6Food();
     }
+
+    @Override
+    public long countAllFoodbyCategoryId(int categoryId) {
+        return foodRepository.countAllByCategoryId(categoryId);
+    }
 }

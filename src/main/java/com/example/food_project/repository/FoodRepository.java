@@ -13,4 +13,7 @@ public interface FoodRepository extends JpaRepository<FoodEntity, Integer> {
 
     @Query(value = "select f.* from food as f order by f.id DESC limit 6", nativeQuery = true)
     List<FoodEntity> get6Food();
+
+    long countAllByCategoryId(int categoryId);
+
 }

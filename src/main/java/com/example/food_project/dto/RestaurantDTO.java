@@ -1,11 +1,17 @@
 package com.example.food_project.dto;
 
 
+import com.example.food_project.entity.RestaurantReviewEntity;
+
+import java.util.Set;
+
 public class RestaurantDTO {
 
     private String title;
     private String image;
     private float avgRate;
+
+    private Set<RestaurantReviewEntity> reviewEntityList;
 
     public String getTitle() {
         return title;
@@ -29,5 +35,13 @@ public class RestaurantDTO {
 
     public void setAvgRate(float avgRate) {
         this.avgRate = avgRate;
+    }
+
+    public Set<RestaurantReviewEntity> getReviewEntityList() {
+        return reviewEntityList;
+    }
+
+    public void setReviewEntityList(Set<RestaurantReviewEntity> reviewEntityList) {
+        this.reviewEntityList = reviewEntityList;
     }
 }

@@ -7,4 +7,6 @@ import java.util.List;
 public interface FoodService {
 
     List<FoodEntity> get6Food();
+
+    long countAllFoodbyCategoryId(int categoryId);
 }
