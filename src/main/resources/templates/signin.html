@@ -47,7 +47,7 @@
 <div class="mb-3">
 <button type="submit" id="btn-signin" class="btn btn-primary btn-block mb-3">Sign in</button>
 <p class="text-center"><a href="forgot.html" class="text-dark">Forgot password?</a></p>
-<a href="signup.html" class="btn btn-light btn-block mb-2">Create an account</a>
+<a th:href="@{/signup}" class="btn btn-light btn-block mb-2">Create an account</a>
 </div>
 </form>
 </div>
@@ -62,9 +62,19 @@
 
 <script th:src="@{/js/osahan.min.js}" type="b91dad79aa96a1edb6837dad-text/javascript"></script>
 <script th:src="@{/js/rocket-loader.min.js}" data-cf-settings="b91dad79aa96a1edb6837dad-|49" defer=""></script>
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon='{"rayId":"75c6f94c39d87d56","version":"2022.10.3","r":1,"token":"dd471ab1978346bbb991feaa79e6ce5c","si":100}' crossorigin="anonymous"></script>
+<!--<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon='{"rayId":"75c6f94c39d87d56","version":"2022.10.3","r":1,"token":"dd471ab1978346bbb991feaa79e6ce5c","si":100}' crossorigin="anonymous"></script>-->
 <script th:src="@{/js/signin.js}"></script>
 <script th:src="@{/js/index.js}"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script th:inline="javascript">
+    var flag = /*[[${flag}]]*/ false;
+    var icon = /*[[${icon}]]*/ null;
+    var msg = /*[[${msg}]]*/ null;
+    if (flag) {
+        showToast(icon, msg);
+    }
+</script>
+
 </body>
 
 <!-- Mirrored from askbootstrap.com/preview/osahan-eat/theme-sidebar/signin.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 19 Oct 2022 05:04:58 GMT -->

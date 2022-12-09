@@ -17,4 +17,11 @@ public class CategoryServiceImp implements CategoryService {
     public List<CategoryEntity> getExplorerCategory() {
         return categoryRepository.getExplorer();
     }
+
+    @Override
+    public List<CategoryEntity> getAll() {
+        return categoryRepository.findAll();
+    }
+
+
 }

@@ -8,4 +8,6 @@ public interface CategoryService {
 
     List<CategoryEntity> getExplorerCategory();
 
+    List<CategoryEntity> getAll();
+
 }

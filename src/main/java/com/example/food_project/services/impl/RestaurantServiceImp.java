@@ -23,7 +23,7 @@ public class RestaurantServiceImp implements RestaurantService {
     @Override
     public List<RestaurantDTO> getListRestaurant() {
         List<RestaurantDTO> restaurantDTOS = new ArrayList<>();
-        List<RestaurantEntity> restaurantEntities = restaurantRepository.findAll();
+        List<RestaurantEntity> restaurantEntities = restaurantRepository.get6Restaurant();
         for (RestaurantEntity data: restaurantEntities) {
             RestaurantDTO restaurantDTO = new RestaurantDTO();
             restaurantDTO.setTitle(data.getName());
@@ -38,8 +38,8 @@ public class RestaurantServiceImp implements RestaurantService {
             }
             restaurantDTO.setAvgRate(avgRate);
             restaurantDTOS.add(restaurantDTO);
+            restaurantDTO.setReviewEntityList(data.getRestaurantReview());
         }
-
         return restaurantDTOS;
     }
 

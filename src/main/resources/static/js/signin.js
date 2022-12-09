@@ -12,13 +12,16 @@ $(document).ready(function(){
             data: JSON.stringify(data),
           }).done(function( result ) {
                 if(result.success){
-                    window.location.href = "/home";
+                    alert(123)
                     console.log(result);
+                    window.location.href = "/signup"
+
                 }else{
+                    alert(12123)
                     console.log(result);
                 }
             }).fail(
-                console.log(data)
+            window.location.href = "/signin"
         );
     })
 
