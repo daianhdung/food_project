@@ -19,6 +19,7 @@ public class UserDetailEntity {
     private String street;
 
     @OneToOne()
+    @MapsId
     @JoinColumn(name = "id_user")
     private UserEntity user;
 
