@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/category")
+@RequestMapping("/category")
 public class CategoryController {
 
     @Autowired
@@ -27,21 +27,5 @@ public class CategoryController {
     @Autowired
     FoodService foodService;
 
-    @GetMapping("")
-    public ResponseEntity<DataResponse> getExplorerCategory(){
-        List<CategoryEntity> categoryEntities = categoryService.getExplorerCategory();
-        boolean isSuccess = categoryEntities.size() > 0;
-        DataResponse dataResponse = new DataResponse(200, isSuccess ? "Thành công" : "Rỗng",
-                categoryEntities, isSuccess);
 
-        return new ResponseEntity<>(dataResponse, HttpStatus.OK);
-    }
-
-
-
-    @GetMapping("/2")
-    public ResponseEntity<?> getFood(){
-        List<FoodEntity> foodEntities = foodService.get6Food();
-        return new ResponseEntity<>(foodEntities, HttpStatus.OK);
-    }
 }

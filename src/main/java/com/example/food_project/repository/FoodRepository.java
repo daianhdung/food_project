@@ -16,4 +16,5 @@ public interface FoodRepository extends JpaRepository<FoodEntity, Integer> {
 
     long countAllByCategoryId(int categoryId);
 
+    List<FoodEntity> findAllByCategoryId(int categoryId);
 }

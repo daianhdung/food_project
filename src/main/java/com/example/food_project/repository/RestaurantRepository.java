@@ -18,4 +18,6 @@ public interface RestaurantRepository extends JpaRepository<RestaurantEntity, In
     List<RestaurantEntity> findAll();
 
     Optional<RestaurantEntity> findById(int id);
+
+
 }
