@@ -65,7 +65,7 @@ public class SecSecurityConfig{
 //                .authenticationProvider(customAuthenticationProvider).exceptionHandling().and()
                 .authorizeRequests()
                 .antMatchers("/font/**", "/img/**", "/css/**", "/js/**", "/vendor/**", "/signin",
-                        "/api/signin", "/api/file/**", "/api/refresh-token").permitAll()
+                        "/api/signin", "/api/file/**", "/api/refresh-token", "/reset-password").permitAll()
                 .antMatchers("/home", "/", "/signup").permitAll()
                 .anyRequest().authenticated()
                 .and().formLogin().loginPage(SIGNIN_VIEW).loginProcessingUrl(SIGNIN_VIEW)
