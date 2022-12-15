@@ -39,6 +39,7 @@ public class UserEntity {
     private boolean isActive;
 
     @OneToOne(mappedBy = "user")
+    @PrimaryKeyJoinColumn
     private UserDetailEntity userDetail;
 
     @OneToMany(mappedBy = "user")

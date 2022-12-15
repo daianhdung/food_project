@@ -1,5 +1,6 @@
 package com.example.food_project.services.impl;
 
+import com.example.food_project.entity.UserDetailEntity;
 import com.example.food_project.entity.UserEntity;
 import com.example.food_project.repository.UserRepository;
 import com.example.food_project.services.UserService;
@@ -53,6 +54,14 @@ public class UserServiceImp implements UserService {
         mailSender.send(message);
         user.setPassword(passwordEncoder.encode(stringUtil.removeWhiteSpaceBeginAndEnd(randomPass)));
         return userRepository.save(user);
+    }
+
+    @Override
+    public UserEntity updateUser(UserEntity userEntity) {
+        userEntity.setEmail(stringUtil.parseEmail(userEntity.getEmail()));
+        userEntity.setPhoneNumber(userEntity.getPhoneNumber());
+        userEntity.setFullname(stringUtil.parseName(userEntity.getFullname()));
+        return userRepository.save(userEntity);
     }
 
 

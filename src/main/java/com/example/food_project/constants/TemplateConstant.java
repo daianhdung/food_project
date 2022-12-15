@@ -7,4 +7,6 @@ public class TemplateConstant {
     public static final String SIGNUP_TEMP = "signup";
 
     public static final String RESET_PASSWORD_TEMP = "forgot";
+
+    public static final String SETTING_TEMP = "settings";
 }
