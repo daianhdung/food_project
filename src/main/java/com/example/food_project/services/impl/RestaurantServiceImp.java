@@ -48,8 +48,8 @@ public class RestaurantServiceImp implements RestaurantService {
         Optional<RestaurantEntity> restaurantEntity = restaurantRepository.findById(id);
         if(restaurantEntity.isPresent()){
             RestaurantDetailDTO restaurantDetailDTO = new RestaurantDetailDTO();
-            restaurantDetailDTO.setTitle(restaurantEntity.get().getName());
-            restaurantDetailDTO.setTitle(restaurantEntity.get().getImage());
+            restaurantDetailDTO.setDesc(restaurantEntity.get().getName());
+            restaurantDetailDTO.setImage(restaurantEntity.get().getImage());
             float sumRate = 0;
             float avgRate = 0;
             for(RestaurantReviewEntity dataReview : restaurantEntity.get().getRestaurantReview()){

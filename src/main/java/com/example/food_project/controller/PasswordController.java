@@ -14,7 +14,6 @@ import javax.mail.MessagingException;
 import java.io.UnsupportedEncodingException;
 
 import static com.example.food_project.constants.ParamConstant.*;
-import static com.example.food_project.constants.ParamConstant._isMsgShow;
 import static com.example.food_project.constants.TemplateConstant.*;
 import static com.example.food_project.constants.ViewConstant.*;
 

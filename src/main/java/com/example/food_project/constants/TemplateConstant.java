@@ -9,4 +9,6 @@ public class TemplateConstant {
     public static final String RESET_PASSWORD_TEMP = "forgot";
 
     public static final String SETTING_TEMP = "settings";
+
+    public static final String LISTING_TEMP = "listing";
 }
