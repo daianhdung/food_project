@@ -37,7 +37,7 @@
 
 <div class="d-flex align-items-center justify-content-between mb-3 mt-2">
 <h5 class="mb-0">Explore categories</h5>
-<a href="listing.html" class="small font-weight-bold text-dark">See all <i class="mdi mdi-chevron-right mr-2"></i></a>
+<a th:href="@{/listing/category/0}" class="small font-weight-bold text-dark">See all <i class="mdi mdi-chevron-right mr-2"></i></a>
 </div>
 
 <div  class="row">
@@ -54,15 +54,15 @@
 
 <div class="d-flex align-items-center justify-content-between mb-3 mt-2">
 <h5 class="mb-0">Featured restaurants</h5>
-<a href="listing.html" class="small font-weight-bold text-dark">See all <i class="mdi mdi-chevron-right mr-2"></i></a>
+<a th:href="@{/listing/category/0}" class="small font-weight-bold text-dark">See all <i class="mdi mdi-chevron-right mr-2"></i></a>
 </div>
 
 <div class="row">
 
-<a th:each="item: ${restaurant}" href="detail.html" class="text-dark text-decoration-none col-xl-4 col-lg-12 col-md-12">
+<a th:each="item: ${restaurant}" th:href="@{/detail/restaurant/{id}(id = ${item.getId()})}" class="text-dark text-decoration-none col-xl-4 col-lg-12 col-md-12">
 <div class="bg-white shadow-sm rounded d-flex align-items-center p-1 mb-4 osahan-list">
 <div class="bg-light p-3 rounded">
-<img th:src="${'img/' + item.getImage()}" class="img-fluid">
+<img th:src="${'/img/' + item.getImage()}" class="img-fluid">
 </div>
 <div class="mx-3 py-2 w-100">
 <p th:text="${item.getTitle()}" class="mb-2 text-black"></p>
@@ -84,12 +84,12 @@
 
 <div class="d-flex align-items-center justify-content-between mb-3 mt-2">
 <h5 class="mb-0">Asian food</h5>
-<a href="listing.html" class="small font-weight-bold text-dark">See all <i class="mdi mdi-chevron-right mr-2"></i></a>
+<a th:href="@{/listing/category/0}" class="small font-weight-bold text-dark">See all <i class="mdi mdi-chevron-right mr-2"></i></a>
 </div>
 
 <div class="row">
-<a th:each="item: ${food}" href="#" class="text-decoration-none col-xl-4 col-md-4 mb-4" data-toggle="modal" data-target="#myitemsModal">
-<img th:src="${'img/' + item.getImage()}" class="img-fluid rounded">
+<a th:each="item: ${food}" th:id="${item.getId()}" foodId="click" th:href="@{/home/food/{id}(id = ${item.getId()})}" class="text-decoration-none col-xl-4 col-md-4 mb-4" data-toggle="modal" data-target="#myitemsModal">
+<img th:src="${'/img/' + item.getImage()}" class="img-fluid rounded">
 <div class="d-flex align-items-center mt-3">
 <p th:text="${item.getName()}" class="text-black h6 m-0"></p>
 <span class="badge badge-light ml-auto"><i class="mdi mdi-truck-fast-outline"></i> Free delivery</span>
@@ -123,9 +123,9 @@
 <div class="position-absolute heart-fav">
 <a href="#"><i class="mdi mdi-heart"></i></a>
 </div>
-<img src="img/food-banner.png" class="img-fluid col-md-12 p-0 rounded">
+<img id="foodImg" src="/img/food3.jpg" class="img-fluid col-md-12 p-0 rounded">
 </div>
-<h4 class="mb-2">Char-Broiled Chicken Shish</h4>
+<h4 id="foodName" class="mb-2">Char-Broiled Chicken Shish</h4>
 <p>Served with basmati rice or bulgur pilaf, skewered with grilled vegetables</p>
 <div class="d-flex align-items-center mb-3">
 <p class="text-danger mb-0">Rice choice</p>
@@ -530,16 +530,15 @@
 </div>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script th:src="@{/js/index.js}"></script>
 <script data-cfasync="false" th:src="@{/js/email-decode.min.js}"></script>
 <script th:src="@{/vendor/jquery/jquery.min.js}" type="e83057937dd4e85910db8985-text/javascript"></script>
 <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}" type="e83057937dd4e85910db8985-text/javascript"></script>
-
 <script th:src="@{/vendor/jquery-easing/jquery.easing.min.js}" type="e83057937dd4e85910db8985-text/javascript"></script>
-
 <script th:src="@{/js/osahan.min.js}" type="e83057937dd4e85910db8985-text/javascript"></script>
 <script th:src="@{/js/rocket-loader.min.js}" data-cf-settings="e83057937dd4e85910db8985-|49" defer=""></script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon='{"rayId":"75c6f93a1e227d56","version":"2022.10.3","r":1,"token":"dd471ab1978346bbb991feaa79e6ce5c","si":100}' crossorigin="anonymous"></script>
-<script th:src="@{/js/index.js}"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script th:inline="javascript">
  var flag = /*[[${flag}]]*/ false;

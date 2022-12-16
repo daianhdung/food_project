@@ -4,6 +4,7 @@ import com.example.food_project.dto.FoodDTO;
 import com.example.food_project.entity.FoodEntity;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface FoodService {
 
@@ -11,5 +12,7 @@ public interface FoodService {
 
     long countAllFoodbyCategoryId(int categoryId);
 
-    public List<FoodDTO> findAllbyCategory(int categoryId);
+    List<FoodDTO> findAllbyCategory(int categoryId);
+
+    FoodDTO findById(int id);
 }

@@ -1,6 +1,6 @@
 package com.example.food_project.controller;
 
-import com.example.food_project.services.FoodService;
+import com.example.food_project.services.RestaurantService;
 import com.example.food_project.services.UserService;
 import com.example.food_project.util.AuthenticationUtil;
 import com.example.food_project.util.PopupUtil;
@@ -17,9 +17,8 @@ import static com.example.food_project.constants.ViewConstant.*;
 import static org.springframework.security.core.context.SecurityContextHolder.getContext;
 
 @Controller
-@RequestMapping(LISTING_VIEW)
-public class ListFoodController {
-
+@RequestMapping(DETAIL_VIEW)
+public class DetailRestaurantController {
     @Autowired
     AuthenticationUtil authenticationUtil;
     @Autowired
@@ -27,18 +26,12 @@ public class ListFoodController {
     @Autowired
     UserService userService;
     @Autowired
-    FoodService foodService;
+    RestaurantService restaurantService;
 
-    @GetMapping()
-    public ModelAndView listing(){
-        var mav = new ModelAndView(LISTING_TEMP);
-        return mav;
-    }
-
-    @GetMapping("/category/{id}")
-    public ModelAndView listFoodbyCategory(@PathVariable("id") int categoryId){
+    @GetMapping("/restaurant/{id}")
+    public ModelAndView restaurantDetail(@PathVariable("id") int restaurantId){
         var client = authenticationUtil.getAccount();
-        var mav = new ModelAndView(LISTING_TEMP);
+        var mav = new ModelAndView(DETAIL_TEMP);
         var authentication = getContext().getAuthentication();
         if(client != null){
             var user = userService.getUser(authentication.getName());
@@ -47,9 +40,7 @@ public class ListFoodController {
         }else {
             mav.addObject(SIGNIN_PARAM, false);
         }
-        mav.addObject("listFood", foodService.findAllbyCategory(categoryId));
+        mav.addObject("restaurant", restaurantService.getDetailRestaurant(restaurantId));
         return mav;
     }
-
-
 }

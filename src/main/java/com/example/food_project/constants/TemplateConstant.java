@@ -11,4 +11,5 @@ public class TemplateConstant {
     public static final String SETTING_TEMP = "settings";
 
     public static final String LISTING_TEMP = "listing";
+    public static final String DETAIL_TEMP = "detail";
 }

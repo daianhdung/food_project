@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface FoodRepository extends JpaRepository<FoodEntity, Integer> {
@@ -17,4 +18,6 @@ public interface FoodRepository extends JpaRepository<FoodEntity, Integer> {
     long countAllByCategoryId(int categoryId);
 
     List<FoodEntity> findAllByCategoryId(int categoryId);
+
+    FoodEntity findById(Optional<Integer> id);
 }

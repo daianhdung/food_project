@@ -10,5 +10,5 @@ public class ViewConstant {
     public static final String RESET_PASSWORD_VIEW = "/reset-password";
     public static final String SETTING_VIEW = "/setting";
     public static final String LISTING_VIEW = "/listing";
-
+    public static final String DETAIL_VIEW = "/detail";
 }
