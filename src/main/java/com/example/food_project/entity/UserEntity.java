@@ -48,6 +48,9 @@ public class UserEntity {
     @OneToMany(mappedBy = "user")
     private Set<TOrderEntity> tOthers;
 
+    @OneToMany(mappedBy = "user")
+    private Set<UserFavorEntity> userFavorEntities;
+
     public int getId() {
         return id;
     }
@@ -150,5 +153,13 @@ public class UserEntity {
 
     public void settOthers(Set<TOrderEntity> tOthers) {
         this.tOthers = tOthers;
+    }
+
+    public Set<UserFavorEntity> getUserFavorEntities() {
+        return userFavorEntities;
+    }
+
+    public void setUserFavorEntities(Set<UserFavorEntity> userFavorEntities) {
+        this.userFavorEntities = userFavorEntities;
     }
 }
