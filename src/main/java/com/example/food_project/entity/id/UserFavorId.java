@@ -1,29 +1,46 @@
 package com.example.food_project.entity.id;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 
 public class UserFavorId implements Serializable {
-    private int id_user;
-    private int id_food;
 
-    public UserFavorId(int id_user, int id_food) {
-        this.id_user = id_user;
-        this.id_food = id_food;
+
+    private int idUser;
+    private int idFood;
+
+    private String isFavor;
+
+    public UserFavorId(int idUser, int idFood, String isFavor) {
+        this.idUser = idUser;
+        this.idFood = idFood;
+        this.isFavor = isFavor;
     }
 
-    public int getId_user() {
-        return id_user;
+    public UserFavorId(){}
+
+    public int getIdUser() {
+        return idUser;
     }
 
-    public void setId_user(int id_user) {
-        this.id_user = id_user;
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
     }
 
-    public int getId_food() {
-        return id_food;
+    public int getIdFood() {
+        return idFood;
     }
 
-    public void setId_food(int id_food) {
-        this.id_food = id_food;
+    public void setIdFood(int idFood) {
+        this.idFood = idFood;
+    }
+
+    public String getIsFavor() {
+        return isFavor;
+    }
+
+    public void setIsFavor(String isFavor) {
+        this.isFavor = isFavor;
     }
 }
