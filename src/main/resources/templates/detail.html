@@ -38,7 +38,9 @@
 <div class="container-fluid">
 <div class="banner-image p-0 mt-n4 mx-n4 position-relative">
 <div class="position-absolute heart-icon">
-<a href="#" class="bg-white text-decoration-none rounded p-2 text-dark font-weight-bold"><i class="far fa-heart"></i></a>
+<a id="favorRes" isFavorRes th:style="${isFavor == 'true' ? 'color: red !important;' : 'color: ;'}"
+   th:attr="idRestau=${restaurant.getId()}" th:attrappend="isactive=${isFavor == 'true' ? 'true': 'false'}"
+   href="#" class="bg-white text-decoration-none rounded p-2 text-dark font-weight-bold"><i class="far fa-heart"></i></a>
 </div>
 <img th:src="@{/img/banner.jpg}" class="img-fluid shadow">
 </div>
@@ -1028,6 +1030,8 @@ delivery</span>
 </div>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script th:src="@{/js/index.js}"></script>
 <script data-cfasync="false" th:src="@{/js/email-decode.min.js}"></script>
 <script th:src="@{/vendor/jquery/jquery.min.js}" type="3885e1823c20ea40131517cb-text/javascript"></script>
 <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}" type="3885e1823c20ea40131517cb-text/javascript"></script>
@@ -1037,6 +1041,7 @@ delivery</span>
 <script th:src="@{/js/osahan.min.js}" type="3885e1823c20ea40131517cb-text/javascript"></script>
 <script th:src="@{/js/rocket-loader.min.js}" data-cf-settings="3885e1823c20ea40131517cb-|49" defer=""></script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon='{"rayId":"75c6f942580d7eba","version":"2022.10.3","r":1,"token":"dd471ab1978346bbb991feaa79e6ce5c","si":100}' crossorigin="anonymous"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 <!-- Mirrored from askbootstrap.com/preview/osahan-eat/theme-sidebar/detail.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 19 Oct 2022 05:04:58 GMT -->

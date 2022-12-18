@@ -20,4 +20,6 @@ public interface FoodRepository extends JpaRepository<FoodEntity, Integer> {
     List<FoodEntity> findAllByCategoryId(int categoryId);
 
     FoodEntity findById(Optional<Integer> id);
+
+    List<FoodEntity> findByIdIsIn(List<Integer> id);
 }

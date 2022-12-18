@@ -15,4 +15,6 @@ public interface FoodService {
     List<FoodDTO> findAllbyCategory(int categoryId);
 
     FoodDTO findById(int id);
+
+    List<FoodDTO> findAllFavourite(List<Integer> foodIds);
 }

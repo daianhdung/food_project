@@ -11,4 +11,6 @@ public interface RestaurantService {
     List<RestaurantDTO> getListRestaurant();
 
     RestaurantDetailDTO getDetailRestaurant(int id);
+
+    List<RestaurantDTO> findAllFavourRes(List<Integer> restaurantsId);
 }
