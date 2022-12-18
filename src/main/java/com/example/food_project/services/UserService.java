@@ -14,4 +14,5 @@ public interface UserService {
     UserEntity resetPassword(String email) throws MessagingException, UnsupportedEncodingException;
 
     UserEntity updateUser(UserEntity userEntity);
+
 }

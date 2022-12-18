@@ -3,15 +3,21 @@ package com.example.food_project.entity;
 import com.example.food_project.entity.id.UserFavorId;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity(name = "user_favor")
 @IdClass(UserFavorId.class)
 public class UserFavorEntity {
 
     @Id
-    private int id_user;
+    @Column(name = "id_user")
+    private int idUser;
     @Id
-    private int id_food;
+    @Column(name = "id_food")
+    private int idFood;
+
+    @Column(name = "is_favor")
+    private String isFavor;
 
     @ManyToOne
     @JoinColumn(name = "id_user", insertable = false, updatable = false)
@@ -21,20 +27,30 @@ public class UserFavorEntity {
     @JoinColumn(name = "id_food", insertable = false, updatable = false)
     private FoodEntity food;
 
-    public int getId_user() {
-        return id_user;
+
+
+    public int getIdUser() {
+        return idUser;
     }
 
-    public void setId_user(int id_user) {
-        this.id_user = id_user;
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
     }
 
-    public int getId_food() {
-        return id_food;
+    public int getIdFood() {
+        return idFood;
     }
 
-    public void setId_food(int id_food) {
-        this.id_food = id_food;
+    public void setIdFood(int idFood) {
+        this.idFood = idFood;
+    }
+
+    public String getIsFavor() {
+        return isFavor;
+    }
+
+    public void setIsFavor(String isFavor) {
+        this.isFavor = isFavor;
     }
 
     public UserEntity getUser() {
@@ -52,4 +68,5 @@ public class UserFavorEntity {
     public void setFood(FoodEntity food) {
         this.food = food;
     }
+
 }

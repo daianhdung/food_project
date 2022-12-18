@@ -53,6 +53,7 @@ public class FoodServiceImp implements FoodService {
         Optional<FoodEntity> food = foodRepository.findById(id);
         if(food.isPresent()){
             FoodDTO foodDTO = new FoodDTO();
+            foodDTO.setId(food.get().getId());
             foodDTO.setName(food.get().getName());
             foodDTO.setImg(food.get().getImage());
             return foodDTO;

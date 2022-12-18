@@ -155,6 +155,15 @@ create table food_order(
                            foreign key(id_food) references food(id)
 );
 
+create table user_favor(
+                           id_user int,
+                           id_food int,
+                           is_favor varchar(10) default 'false',
+                           primary key(id_user,id_food),
+                           foreign key(id_user) references user(id),
+                           foreign key(id_food) references food(id)
+);
+
 INSERT INTO category(image, name) VALUES ('mdi-fire', 'Popular');
 INSERT INTO category(image, name) VALUES ('mdi-motorbike', 'FastDelivery');
 INSERT INTO category(image, name) VALUES ('mdi-wallet-outline', 'High class');
