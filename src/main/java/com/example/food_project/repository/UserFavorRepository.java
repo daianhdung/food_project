@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Repository
 public interface UserFavorRepository extends JpaRepository<UserFavorEntity, Integer> {
@@ -19,4 +20,7 @@ public interface UserFavorRepository extends JpaRepository<UserFavorEntity, Inte
     @Modifying
     @Query(value = "UPDATE user_favor set is_favor = ?3 WHERE id_user = ?1 AND id_food = ?2", nativeQuery = true)
     void updateFavor(int idUser, int idFood, String favor);
+
+    @Query(value = "SELECT id_food FROM user_favor as ur WHERE id_user = ?1 AND is_favor = 'true'", nativeQuery = true)
+    List<Integer> getFavor(int idUser);
 }

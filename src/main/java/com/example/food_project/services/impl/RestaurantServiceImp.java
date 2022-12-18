@@ -49,6 +49,7 @@ public class RestaurantServiceImp implements RestaurantService {
         Optional<RestaurantEntity> restaurantEntity = restaurantRepository.findById(id);
         if(restaurantEntity.isPresent()){
             RestaurantDetailDTO restaurantDetailDTO = new RestaurantDetailDTO();
+            restaurantDetailDTO.setId(restaurantEntity.get().getId());
             restaurantDetailDTO.setTitle(restaurantEntity.get().getName());
             restaurantDetailDTO.setImage(restaurantEntity.get().getImage());
             restaurantDetailDTO.setReviewEntityList(restaurantEntity.get().getRestaurantReview());
@@ -64,5 +65,19 @@ public class RestaurantServiceImp implements RestaurantService {
             return restaurantDetailDTO;
         }
         return null;
+    }
+
+    @Override
+    public List<RestaurantDTO> findAllFavourRes(List<Integer> restaurantsId) {
+        List<RestaurantDTO> restaurantDTOS = new ArrayList<>();
+        List<RestaurantEntity> restaurantEntities = restaurantRepository.findByIdIsIn(restaurantsId);
+        for(var data : restaurantEntities){
+            RestaurantDTO restaurantDTO = new RestaurantDTO();
+            restaurantDTO.setId(data.getId());
+            restaurantDTO.setTitle(data.getName());
+            restaurantDTO.setImage(data.getImage());
+            restaurantDTOS.add(restaurantDTO);
+        }
+        return restaurantDTOS;
     }
 }

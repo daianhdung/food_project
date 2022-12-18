@@ -60,4 +60,18 @@ public class FoodServiceImp implements FoodService {
         }
         return null;
     }
+
+    @Override
+    public List<FoodDTO> findAllFavourite(List<Integer> foodIds) {
+        List<FoodDTO> foodDTOList = new ArrayList<>();
+        List<FoodEntity> foodEntities = foodRepository.findByIdIsIn(foodIds);
+        for(var data : foodEntities){
+            FoodDTO foodDTO = new FoodDTO();
+            foodDTO.setId(data.getId());
+            foodDTO.setImg(data.getImage());
+            foodDTO.setName(data.getName());
+            foodDTOList.add(foodDTO);
+        }
+        return foodDTOList;
+    }
 }

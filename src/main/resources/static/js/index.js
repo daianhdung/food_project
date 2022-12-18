@@ -98,4 +98,42 @@ $("[foodId='click']").click(function() {
         })
     });
 
+    $("#favorRes").click(function() {
+        var isFavorRes = $(this).attr("isactive")
+        if(isFavorRes == 'true'){
+            isFavorRes = 'false';
+        }else if (isFavorRes == 'false'){
+            isFavorRes = 'true'
+        }
+        var idRestau = $(this).attr('idRestau')
+        var This = $(this)
+        var data = {}
+        data["idUser"] = 0
+        data["idRestaurant"] = idRestau
+        data["isFavor"] = isFavorRes
+        $.ajax({
+            method: "PUT",
+            url: "http://localhost:8080/api/restaurant-favor/" + idRestau,
+            data: JSON.stringify(data),
+            contentType: "application/json; charset=utf-8"
+        }).done(function (result) {
+            console.log(result)
+            if (result.success) {
+                if(result.data){
+                    This.attr("isactive", 'true')
+                    This.attr('style', 'color: red !important')
+                    showToastModal('success', 'Nhà hàng đã được thêm vào favorite')
+                }else {
+                    This.attr("isactive", 'false')
+                    This.css("color", 'black')
+                    showToastModal('error', 'Nhà hàng đã được loại khỏi favorite')
+                }
+            } else {
+                alert('Thất bại')
+            }
+        }).fail(function (data){
+            alert(500)
+        })
+    });
+
 })

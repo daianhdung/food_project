@@ -6,6 +6,7 @@ import com.example.food_project.services.UserFavorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -27,5 +28,10 @@ public class UserFavorServiceImp implements UserFavorService {
     }
     public UserFavorEntity addFavor(UserFavorEntity userFavor){
         return userFavorRepository.save(userFavor);
+    }
+
+    @Override
+    public List<Integer> getFavor(int userId) {
+        return userFavorRepository.getFavor(userId);
     }
 }

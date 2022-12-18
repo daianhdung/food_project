@@ -30,11 +30,13 @@ public class AddFoodApi {
         FoodDTO foodDTO = foodService.findById(foodId);
         var authentication = getContext().getAuthentication();
         var user = userService.getUser(authentication.getName());
-        UserFavorEntity favor = userFavorService.findByIdUserAndIdFood(user.getId(), foodId);
-        if(favor != null){
-            foodDTO.setIsFavor(favor.getIsFavor());
-        }else {
-            foodDTO.setIsFavor("false");
+        if(user != null){
+            UserFavorEntity favor = userFavorService.findByIdUserAndIdFood(user.getId(), foodId);
+            if(favor != null){
+                foodDTO.setIsFavor(favor.getIsFavor());
+            }else {
+                foodDTO.setIsFavor("false");
+            }
         }
 
         DataResponse dataResponse = new DataResponse();
@@ -65,6 +67,7 @@ public class AddFoodApi {
         dataResponse.setStatus(200);
         dataResponse.setSuccess(true);
         dataResponse.setData(userFavor.getIsFavor().equals("true"));
+        dataResponse.setDesc(String.valueOf(userFavor.getIdFood()));
 
         return new ResponseEntity<>(dataResponse, HttpStatus.OK);
     }

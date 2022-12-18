@@ -47,8 +47,8 @@ public class SecSecurityConfig{
                 .authorizeRequests()
                 .antMatchers("/font/**", "/img/**", "/css/**", "/js/**", "/vendor/**", SIGNIN_VIEW,
                         "/api/signin", "/api/file/**", "/api/refresh-token", RESET_PASSWORD_VIEW, SIGNUP_VIEW, HOME_VIEW,
-                        LISTING_VIEW + "/category/**", DETAIL_VIEW + "/restaurant/**", "/api/food/**", "/",
-                        "/api/favor-toggle", "/api/update-profile").permitAll()
+                        LISTING_VIEW + "/category/**", DETAIL_VIEW + "/restaurant/**", "/api/food/**", "/"
+                ).permitAll()
                 .anyRequest().authenticated()
                 .and().formLogin().loginPage(SIGNIN_VIEW).loginProcessingUrl(SIGNIN_VIEW)
                 .defaultSuccessUrl(HOME_VIEW).failureUrl(SIGNIN_VIEW + "?error=true")

@@ -1,6 +1,5 @@
 package com.example.food_project.repository;
 
-import com.example.food_project.entity.CategoryEntity;
 import com.example.food_project.entity.RestaurantEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -19,5 +18,5 @@ public interface RestaurantRepository extends JpaRepository<RestaurantEntity, In
 
     Optional<RestaurantEntity> findById(int id);
 
-
+    List<RestaurantEntity> findByIdIsIn(List<Integer> id);
 }

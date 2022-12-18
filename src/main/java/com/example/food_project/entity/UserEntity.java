@@ -51,6 +51,9 @@ public class UserEntity {
     @OneToMany(mappedBy = "user")
     private Set<UserFavorEntity> userFavorEntities;
 
+    @OneToMany(mappedBy = "user")
+    private Set<RestaurantFavorEntity> restaurantFavorEntities;
+
     public int getId() {
         return id;
     }
@@ -161,5 +164,13 @@ public class UserEntity {
 
     public void setUserFavorEntities(Set<UserFavorEntity> userFavorEntities) {
         this.userFavorEntities = userFavorEntities;
+    }
+
+    public Set<RestaurantFavorEntity> getRestaurantFavorEntities() {
+        return restaurantFavorEntities;
+    }
+
+    public void setRestaurantFavorEntities(Set<RestaurantFavorEntity> restaurantFavorEntities) {
+        this.restaurantFavorEntities = restaurantFavorEntities;
     }
 }
