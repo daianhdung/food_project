@@ -180,81 +180,9 @@
 </div>
 </div>
 
-<div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-<div class="modal-dialog">
-<div class="modal-content">
-<div class="modal-header">
-<h5 class="modal-title" id="exampleModalLabel">My cart <span class="small">(2 items)</span></h5>
-<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-<span aria-hidden="true">&times;</span>
-</button>
-</div>
-<div class="modal-body osahan-my-cart">
-<a href="#" class="text-dark d-flex align-items-center mb-3" data-toggle="modal" data-target="#myaddressModal">
-<div>
-<p class="mb-0 text-danger">Delivered to</p>
- <p class="mb-0 small">300 Post Street San Francico, CA</p>
-</div>
-<div class="ml-auto">
-<p class="mb-0 text-info">Edit<i class="mdi h6 m-0 mdi-chevron-right"></i></p>
-</div>
-</a>
-<div class="details-page border-top pt-3 osahan-my-cart-item">
-<h6 class="mb-3">Pizza Hut</h6>
-<div class="d-flex align-items-center mb-3">
-<div class="mr-2"><img src="img/pizza.png" class="img-fluid rounded"></div>
-<div class="small text-black-50">1 x</div>
-<div class="ml-2">
-<p class="mb-0 text-black">Cheese pie</p>
-<p class="mb-0 small">$15</p>
-</div>
-<a href="#" class="ml-auto"><i class="btn btn-light text-danger mdi mdi-trash-can-outline rounded"></i></a>
-</div>
-<div class="d-flex align-items-center mb-3">
-<div class="mr-2"><img src="img/burger.png" class="img-fluid rounded"></div>
-<div class="small text-black-50">2 x</div>
-<div class="text-dark ml-2">
-<p class="mb-0 text-black">Peperoni pie</p>
-<p class="mb-0 small">$23</p>
-</div>
-<a href="#" class="ml-auto"><i class="btn btn-light text-danger mdi mdi-trash-can-outline rounded"></i></a>
-</div>
-<div class="d-flex align-items-center mb-3">
-<div class="mr-2"><img src="img/burger2.png" class="img-fluid rounded"></div>
-<div class="small text-black-50">3 x</div>
-<div class="text-dark ml-2">
-<p class="mb-0 text-black">Osahan Burger</p>
-<p class="mb-0 small">$50</p>
-</div>
-<a href="#" class="ml-auto"><i class="btn btn-light text-danger mdi mdi-trash-can-outline rounded"></i></a>
-</div>
-<div class="my-3"><a href="#" data-toggle="modal" data-target="#myitemsModal" class="text-primary"><i class="mdi mdi-plus mr-2"></i> Add more items</a></div>
-<a href="#" class="d-flex align-items-center mb-3" data-toggle="modal" data-target="#mycoupansModal">
-<div class="mr-3 bg-light rounded p-2 osahan-icon"><i class="mdi mdi-motorbike"></i></div>
-<div>
-<p class="mb-0 text-dark">Delivery</p>
-<p class="mb-0 small text-black-50">$0</p>
-</div>
-</a>
-<a href="#" class="d-flex align-items-center mb-3" data-toggle="modal" data-target="#mycoupansModal">
-<div class="mr-3 bg-light rounded p-2 osahan-icon"><i class="mdi mdi-percent"></i></div>
-<div>
-<p class="mb-0 text-dark">Promo code</p>
-<p class="mb-0 small text-black-50">HFXWO</p>
-</div>
-<div class="ml-auto"><button class="btn btn-primary"><i class="mdi mdi-plus"></i></button></div>
-</a>
-</div>
-</div>
-<div class="modal-footer justify-content-start osahan-my-cart-footer">
-<div class="row w-100">
-<div class="col-2 px-0"><button class="btn btn-warning btn-block" data-toggle="modal" data-target="#mysplitModal"><i class="mdi mdi-account-plus-outline"></i></button></div>
-<div class="col-10 pr-0"><button class="btn btn-primary btn-block" data-toggle="modal" data-target="#checkoutModal">Checkout ($53.00)</button></div>
-</div>
-</div>
-</div>
-</div>
-</div>
+<!--modal checkout-->
+<div th:replace="fragments/modal-checkout :: modal-checkout"></div>
+
 
 <div class="modal fade" id="checkoutModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog">

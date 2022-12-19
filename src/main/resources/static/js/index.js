@@ -1,3 +1,5 @@
+
+
 function showToast(icon, title){
     const Toast = Swal.mixin({
         toast: true,
@@ -46,6 +48,8 @@ $("[foodId='click']").click(function() {
             $('#foodImg').attr('src','/img/'+ result.data.img)
             $('#foodImg').attr('foodId',result.data.id)
             $("#favor").attr('isactive', result.data.isFavor)
+            $("#foodPrice").text("ADD ($" + result.data.price + ")")
+            $("#foodPrice").attr('priceFood', result.data.price)
             var isactive = $("#favor").attr('isactive')
             if(isactive == 'true'){
                 $("#favor").css("color", '#c60021')
@@ -53,12 +57,80 @@ $("[foodId='click']").click(function() {
                 $("#favor").css("color", 'black')
             }
             $('#foodName').text(result.data.name)
-            console.log(result.data.img)
+            var listFoodAdd = result.data.foodAddonEntities
+            listFoodAdd.forEach(function (item, index) {
+                $("#formFoodAdd .food-add").eq(index).text(item.name)
+                $("#formFoodAdd .food-add").eq(index).attr('price', item.price)
+            });
+
         } else {
             alert('Thất bại')
         }
     })
 });
+
+$("#foodPrice").click(function() {
+    var items = []
+    var idFood = $('#foodImg').attr('foodId')
+    var nameFood = $('#foodName').text()
+    var imgFood = $('#foodImg').attr('src')
+    var priceFood = $("#foodPrice").attr('priceFood')
+    var item = {
+        'idFood' : idFood,
+        'imgFood': imgFood,
+        'nameFood': nameFood,
+        'priceFood': priceFood,
+        'quantity': 1
+    }
+    if(JSON.parse(localStorage.getItem('items')) === null){
+        items.push(item)
+        localStorage.setItem('items', JSON.stringify(items))
+    }else{
+        const localItems = JSON.parse(localStorage.getItem('items'))
+        $.map(localItems, function(data){
+            if(item.idFood == data.idFood){
+                item.quantity = data.quantity + 1;
+            }
+            else{
+                items.push(data)
+            }
+        })
+        items.push(item)
+        localStorage.setItem('items', JSON.stringify(items))
+    }
+});
+
+    $("#foodPrice").click(function() {
+        $("#body-cart-modal").html("");
+        let localItemsCart = JSON.parse(localStorage.getItem('items'))
+        $('#totalItem').text('(' + localItemsCart.length + ' items)')
+        localItemsCart.forEach(function (item, index) {
+            $('#body-cart-modal').append(`<div class="d-flex align-items-center mb-3">
+            <div class="mr-2"><img width="90" src="${item.imgFood}" class="img-fluid rounded"></div>
+            <div class="small text-black-50">${item.quantity} x</div>
+            <div class="ml-2">
+                <p class="mb-0 text-black">${item.nameFood}</p>
+                <p class="mb-0 small">$${item.priceFood}</p>
+            </div>
+            <a href="#" id="button-delete-food" so="${index}" class="ml-auto"><i class="btn btn-light text-danger mdi mdi-trash-can-outline rounded"></i></a>
+        </div>`)
+        });
+        var totalCheckout = 0;
+        $.map(localItemsCart, function(data){
+            let totalPriceFood = data.quantity * data.priceFood;
+            totalCheckout += totalPriceFood
+        })
+        $('#button-checkout').text('CHECKOUT ($' + totalCheckout + ')')
+
+    });
+    $(document).on('click', '#button-delete-food', function(){
+        let localItemsCart = JSON.parse(localStorage.getItem('items'))
+        var This = $(this)
+        let index = This.attr('so')
+        localItemsCart.splice(index, 1)
+        This.closest('div').remove()
+        localStorage.setItem('items', JSON.stringify(localItemsCart))
+    })
 
     $("#favor").click(function() {
         var isFavor = $(this).attr("isactive")

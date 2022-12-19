@@ -56,6 +56,8 @@ public class FoodServiceImp implements FoodService {
             foodDTO.setId(food.get().getId());
             foodDTO.setName(food.get().getName());
             foodDTO.setImg(food.get().getImage());
+            foodDTO.setPrice(food.get().getPrice());
+            foodDTO.setFoodAddonEntities(food.get().getFoodAddon());
             return foodDTO;
         }
         return null;
