@@ -1,5 +1,7 @@
 package com.example.food_project.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity(name = "food_addon")
@@ -19,6 +21,7 @@ public class FoodAddonEntity {
     private int price;
 
     @ManyToOne()
+    @JsonIgnore
     @JoinColumn(name = "id_food")
     private FoodEntity food;
 

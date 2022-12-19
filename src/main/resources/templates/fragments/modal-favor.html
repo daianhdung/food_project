@@ -1,3 +1,5 @@
+<!--Modal add food-->
+
 <div th:fragment="modal-favor" class="modal fade" id="myitemsModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog border-bottom">
         <div class="modal-content osahan-item-detail-pop">
@@ -7,6 +9,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
+            <form class="mb-2" id="formFoodAdd">
             <div class="modal-body px-3 py-0">
                 <div class="pb-3 position-relative">
                     <div class="position-absolute heart-fav">
@@ -20,25 +23,30 @@
                     <p class="text-danger mb-0">Rice choice</p>
                     <p class="bg-primary text-white rounded px-2 py-1 mb-0 small ml-auto">Required</p>
                 </div>
-                <form class="mb-2">
+
                     <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="customCheck1" checked>
-                        <label class="custom-control-label font-weight-bold text-dark" for="customCheck1">Basmati rice</label>
+                        <label class="food-add custom-control-label font-weight-bold text-dark" for="customCheck1"></label>
                     </div>
                     <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="customCheck2">
-                        <label class="custom-control-label font-weight-bold text-dark" for="customCheck2">Brown rice</label>
+                        <label class="food-add custom-control-label font-weight-bold text-dark" for="customCheck2"></label>
                     </div>
                     <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="customCheck3">
-                        <label class="custom-control-label font-weight-bold text-dark" for="customCheck3">Bulgur pilaf</label>
+                        <label class="food-add custom-control-label font-weight-bold text-dark" for="customCheck3"></label>
                     </div>
-                </form>
+
+                <input type="hidden" name="" id="totalPrice" value="">
                 <p class="mb-0"><a href="#" class="text-decoration-none text-primary"><i class="fas fa-plus mr-2 bg-light rounded p-2"></i> Add special instructions</a></p>
             </div>
             <div class="modal-footer">
-                <button data-toggle="modal" data-target="#cartModal" class="btn btn-primary btn-block">Add ($15.00)</button>
+                <button id="foodPrice"  data-toggle="modal" data-target="#cartModal" class="btn btn-primary btn-block">Add ($15.00)</button>
             </div>
+            </form>
         </div>
     </div>
 </div>
+
+<!--Modal Checkout-->
+
