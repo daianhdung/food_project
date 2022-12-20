@@ -5,27 +5,28 @@ import java.io.Serializable;
 
 public class FoodOrderId implements Serializable {
 
-    private int id_order;
-    private int id_food;
+    private int idOrder;
+    private int idFood;
 
-    public FoodOrderId(int id_order, int id_food) {
-        this.id_order = id_order;
-        this.id_food = id_food;
+    public FoodOrderId(int idOrder, int idFood) {
+        this.idOrder = idOrder;
+        this.idFood = idFood;
+    }
+    public FoodOrderId(){}
+
+    public int getIdOrder() {
+        return idOrder;
     }
 
-    public int getId_order() {
-        return id_order;
+    public void setIdOrder(int idOrder) {
+        this.idOrder = idOrder;
     }
 
-    public void setId_order(int id_order) {
-        this.id_order = id_order;
+    public int getIdFood() {
+        return idFood;
     }
 
-    public int getId_food() {
-        return id_food;
-    }
-
-    public void setId_food(int id_food) {
-        this.id_food = id_food;
+    public void setIdFood(int idFood) {
+        this.idFood = idFood;
     }
 }

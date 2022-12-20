@@ -21,6 +21,12 @@
 <link th:href="@{/vendor/mdi-icons/css/materialdesignicons.min.css}" rel="stylesheet">
 
 <link th:href="@{/css/custom.css}" rel="stylesheet">
+ <style>
+  .disabledbutton {
+   pointer-events: none;
+   opacity: 0.4;
+  }
+ </style>
 </head>
 <body id="page-top">
 
@@ -182,67 +188,8 @@
 
 <!--modal checkout-->
 <div th:replace="fragments/modal-checkout :: modal-checkout"></div>
-
-
-<div class="modal fade" id="checkoutModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-<div class="modal-dialog">
-<div class="modal-content">
-<div class="modal-header">
-<h5 class="modal-title" id="exampleModalLabel">Checkout</h5>
-<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-<span aria-hidden="true">&times;</span>
-</button>
-</div>
-<div class="modal-body">
-<p class="text-dark mb-2 small">Payment methods</p>
-<div class="btn-group btn-group-toggle mb-3" data-toggle="buttons">
-<label class="btn osahan-radio btn-light btn-sm rounded active">
-<input type="radio" name="options" id="option1" checked> <i class="mdi mdi-credit-card-outline"></i> Card
-</label>
-<label class="btn osahan-radio btn-light btn-sm rounded">
-<input type="radio" name="options" id="option2"> <i class="mdi mdi-currency-usd"></i> COD
-</label>
-<label class="btn osahan-radio btn-light btn-sm rounded">
-<input type="radio" name="options" id="option3"> <i class="fab fa-paypal"></i> Paypal
-</label>
-</div>
-<h6 class="mb-3">My cards <span class="small">(2)</span></h6>
-<div class="btn-group btn-group-toggle osahan-card" data-toggle="buttons">
-<label class="btn osahan-radio osahan-card-pay btn-light btn-sm rounded mb-2 active w-100">
-<input type="radio" name="options" id="option1" checked>
-<div class="d-flex align-items-center card-detials small mb-3">
-<p class="small"><i class="mdi mdi-chip"></i></p>
-<p class="ml-auto d-flex align-items-center">
-<span class="card-no mr-2"><i class="mdi mdi-circle"></i> <i class="mdi mdi-circle"></i> <i class="mdi mdi-circle"></i> <i class="mdi mdi-circle"></i></span>
-<span class="small">1211</span>
-</p>
-</div>
-<h1 class="mb-0">Mastercard</h1>
-<p class="small mb-1">Platinum</p>
-<p class="text-right mb-0"><i class="fab fa-cc-mastercard text-warning"></i></p>
-</label>
-<label class="btn osahan-radio osahan-card-pay btn-light btn-sm rounded mb-2 w-100">
-<input type="radio" name="options" id="option2">
-<div class="d-flex align-items-center card-detials small mb-3">
-<p class="small"><i class="mdi mdi-chip"></i></p>
-<p class="ml-auto d-flex align-items-center">
-<span class="card-no mr-2"><i class="mdi mdi-circle"></i> <i class="mdi mdi-circle"></i> <i class="mdi mdi-circle"></i> <i class="mdi mdi-circle"></i></span>
-<span class="small">2277</span>
-</p>
-</div>
-<h1 class="mb-0">Visa Debit</h1>
-<p class="small mb-1">Plantinum</p>
-<p class="text-right mb-0"><i class="fab fa-cc-visa"></i></p>
-</label>
-</div>
-<a href="#" data-toggle="modal" data-target="#paymentsModal" class="btn btn-light btn-block"><i class="mdi mdi-plus"></i> Add</a>
-</div>
-<div class="modal-footer justify-content-start">
-<a href="orders.html" class="btn btn-primary btn-block">Confirm payment ($53.00)</a>
-</div>
-</div>
-</div>
-</div>
+<!--Checkout confirm-->
+<div th:replace="fragments/modal-checkout :: modal-checkout-confirm"></div>
 
 <div class="modal fade" id="myaddressModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 <div class="modal-dialog">

@@ -18,4 +18,9 @@ public class ParamConstant {
     public static final String CATEGORY_PARAM = "category";
     public static final String RESTAURANT_PARAM = "restaurant";
     public static final String FOOD_PARAM = "food";
+
+    public static final int STATUS_PREPARE_PARAM = 1;
+    public static final int STATUS_ONWAY_PARAM = 2;
+    public static final int STATUS_COMPLETE_PARAM = 3;
+
 }

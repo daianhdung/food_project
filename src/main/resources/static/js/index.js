@@ -79,8 +79,8 @@ $("#foodPrice").click(function() {
         'idFood' : idFood,
         'imgFood': imgFood,
         'nameFood': nameFood,
-        'priceFood': priceFood,
-        'quantity': 1
+        'price': priceFood,
+        'quality': 1
     }
     if(JSON.parse(localStorage.getItem('items')) === null){
         items.push(item)
@@ -89,7 +89,7 @@ $("#foodPrice").click(function() {
         const localItems = JSON.parse(localStorage.getItem('items'))
         $.map(localItems, function(data){
             if(item.idFood == data.idFood){
-                item.quantity = data.quantity + 1;
+                item.quality = data.quality + 1;
             }
             else{
                 items.push(data)
@@ -100,37 +100,71 @@ $("#foodPrice").click(function() {
     }
 });
 
-    $("#foodPrice").click(function() {
+    $(".foodCart").click(function() {
         $("#body-cart-modal").html("");
         let localItemsCart = JSON.parse(localStorage.getItem('items'))
         $('#totalItem').text('(' + localItemsCart.length + ' items)')
         localItemsCart.forEach(function (item, index) {
             $('#body-cart-modal').append(`<div class="d-flex align-items-center mb-3">
             <div class="mr-2"><img width="90" src="${item.imgFood}" class="img-fluid rounded"></div>
-            <div class="small text-black-50">${item.quantity} x</div>
+            <div class="small text-black-50">${item.quality} x</div>
             <div class="ml-2">
                 <p class="mb-0 text-black">${item.nameFood}</p>
-                <p class="mb-0 small">$${item.priceFood}</p>
+                <p class="mb-0 small">$${item.price}</p>
             </div>
             <a href="#" id="button-delete-food" so="${index}" class="ml-auto"><i class="btn btn-light text-danger mdi mdi-trash-can-outline rounded"></i></a>
         </div>`)
         });
         var totalCheckout = 0;
         $.map(localItemsCart, function(data){
-            let totalPriceFood = data.quantity * data.priceFood;
+            let totalPriceFood = data.quality * data.price;
             totalCheckout += totalPriceFood
         })
         $('#button-checkout').text('CHECKOUT ($' + totalCheckout + ')')
-
     });
+    $("#button-checkout").click(function() {
+        $("#card-choose").addClass("disabledbutton");
+        $("#add-card").addClass("disabledbutton")
+    })
     $(document).on('click', '#button-delete-food', function(){
         let localItemsCart = JSON.parse(localStorage.getItem('items'))
         var This = $(this)
         let index = This.attr('so')
         localItemsCart.splice(index, 1)
         This.closest('div').remove()
+        var totalCheckout = 0;
+        $.map(localItemsCart, function(data){
+            let totalPriceFood = data.quality * data.price;
+            totalCheckout += totalPriceFood
+        })
+        $('#totalItem').text('(' + localItemsCart.length + ' items)')
+        $('#button-checkout').text('CHECKOUT ($' + totalCheckout + ')')
         localStorage.setItem('items', JSON.stringify(localItemsCart))
     })
+
+    $("#confirm-checkout").click(function() {
+        let optionsPay = $('input[name=options]:checked').attr('value')
+        if(optionsPay != 'COD'){
+            showToastModal('error', 'Tính năng này đang phát triển')
+        }else{
+            data = localStorage.getItem('items')
+            $.ajax({
+            method: "POST",
+            url: "http://localhost:8080/api/order",
+            data: data,
+            contentType: "application/json; charset=utf-8"
+        }).done(function (result) {
+            if (result.success) {
+                localStorage.removeItem('items')
+                showToastModal('success', 'Thành công')
+            } else {
+                alert('Thất bại')
+            }
+        }).fail(function (data){
+            alert(500)
+        })
+        }
+    });
 
     $("#favor").click(function() {
         var isFavor = $(this).attr("isactive")

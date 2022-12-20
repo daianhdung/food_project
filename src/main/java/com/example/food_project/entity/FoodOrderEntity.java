@@ -9,9 +9,11 @@ import javax.persistence.*;
 public class FoodOrderEntity {
 
     @Id
-    private int id_order;
+    @Column(name = "id_order")
+    private int idOrder;
     @Id
-    private int id_food;
+    @Column(name = "id_food")
+    private int idFood;
 
     @Column(name = "price")
     private float price;
@@ -30,20 +32,20 @@ public class FoodOrderEntity {
     @JoinColumn(name = "id_food", insertable = false, updatable = false)
     private FoodEntity food;
 
-    public int getId_order() {
-        return id_order;
+    public int getIdOrder() {
+        return idOrder;
     }
 
-    public void setId_order(int id_order) {
-        this.id_order = id_order;
+    public void setIdOrder(int idOrder) {
+        this.idOrder = idOrder;
     }
 
-    public int getId_food() {
-        return id_food;
+    public int getIdFood() {
+        return idFood;
     }
 
-    public void setId_food(int id_food) {
-        this.id_food = id_food;
+    public void setIdFood(int idFood) {
+        this.idFood = idFood;
     }
 
     public float getPrice() {
