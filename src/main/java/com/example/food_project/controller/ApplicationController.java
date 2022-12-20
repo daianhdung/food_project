@@ -10,11 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-
-import java.util.Optional;
 
 import static com.example.food_project.constants.ParamConstant.*;
 import static com.example.food_project.constants.TemplateConstant.HOME_TEMP;
@@ -63,6 +60,7 @@ public class ApplicationController {
     public ModelAndView index(){
         var client = authenticationUtil.getAccount();
         var mav = new ModelAndView(HOME_TEMP);
+        mav.addObject("path", HOME_VIEW);
         var authentication = getContext().getAuthentication();
         mav.addObject(CATEGORY_PARAM, categoryService.getExplorerCategory());
         mav.addObject(RESTAURANT_PARAM, restaurantService.getListRestaurant());

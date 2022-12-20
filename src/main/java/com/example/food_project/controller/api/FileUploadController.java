@@ -1,4 +1,4 @@
-package com.example.food_project.controller;
+package com.example.food_project.controller.api;
 
 
 import com.example.food_project.services.FileUploadService;
