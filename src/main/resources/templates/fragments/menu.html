@@ -1,4 +1,5 @@
-<ul th:fragment="menu" class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul th:fragment="menu" class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar"
+    xmlns:th="http://www.thymeleaf.org">
 
   <a class="sidebar-brand d-flex align-items-center" th:href="@{/home}">
     <div class="sidebar-brand-icon">
@@ -6,38 +7,38 @@
     </div>
   </a>
 
-  <li class="nav-item active">
+  <li th:classappend="${path == '/home' ? 'active' : ''}" class="nav-item">
     <a class="nav-link" th:href="@{/home}">
-      <i class="mdi mdi-home-variant-outline"></i>
+      <i class="mdi mdi-home-variant-outline"></i >
       <span>Home</span></a>
   </li>
 
-  <li class="nav-item">
-    <a class="nav-link" href="explore.html">
+  <li th:classappend="${path == '/explore' ? 'active' : ''}" class="nav-item">
+    <a class="nav-link" th:href="@{/explore}">
       <i class="mdi mdi-grid-large"></i>
       <span>Explore</span></a>
   </li>
 
-  <li class="nav-item">
+  <li th:classappend="${path == '/favourite' ? 'active' : ''}" class="nav-item">
     <a class="nav-link" th:href="@{/favourite}">
       <i class="mdi mdi-bookmark-outline"></i>
       <span>Favourities</span></a>
   </li>
 
-  <li class="nav-item">
+  <li th:classappend="${path == '/orders' ? 'active' : ''}" class="nav-item">
     <a class="nav-link" href="orders.html">
       <i class="mdi mdi-book-open"></i>
       <span>Orders</span></a>
   </li>
 
-  <li class="nav-item">
+  <li th:classappend="${path == '/messages' ? 'active' : ''}" class="nav-item">
     <a class="nav-link d-flex" href="messages.html">
       <i class="mdi mdi-message-text-outline mr-2"></i>
       <span>Messages</span>
       <span class="rounded-circle bg-white text-primary ml-auto px-2 py-1">2</span></a>
   </li>
 
-  <li class="nav-item">
+  <li th:classappend="${path == '/setting' ? 'active' : ''}" class="nav-item">
     <a class="nav-link" th:href="@{/setting}">
       <i class="mdi mdi-cog"></i>
       <span>Settings</span></a>

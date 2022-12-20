@@ -60,6 +60,7 @@ public class ApplicationController {
     public ModelAndView index(){
         var client = authenticationUtil.getAccount();
         var mav = new ModelAndView(HOME_TEMP);
+        mav.addObject("path", HOME_VIEW);
         var authentication = getContext().getAuthentication();
         mav.addObject(CATEGORY_PARAM, categoryService.getExplorerCategory());
         mav.addObject(RESTAURANT_PARAM, restaurantService.getListRestaurant());

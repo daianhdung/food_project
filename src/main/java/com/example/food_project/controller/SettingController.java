@@ -29,6 +29,7 @@ public class SettingController {
     @GetMapping()
     public ModelAndView settingUser(){
         var mav = new ModelAndView(SETTING_TEMP);
+        mav.addObject("path", SETTING_VIEW);
         var authentication = getContext().getAuthentication();
         var user = userService.getUser(authentication.getName());
         mav.addObject(CLIENT_PARAM, user);
