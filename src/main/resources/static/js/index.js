@@ -121,6 +121,7 @@ $("#foodPrice").click(function() {
             totalCheckout += totalPriceFood
         })
         $('#button-checkout').text('CHECKOUT ($' + totalCheckout + ')')
+        $('#confirm-checkout').text('CONFIRM PAYMENT ($' + totalCheckout + ')')
     });
     $("#button-checkout").click(function() {
         $("#card-choose").addClass("disabledbutton");
@@ -139,6 +140,7 @@ $("#foodPrice").click(function() {
         })
         $('#totalItem').text('(' + localItemsCart.length + ' items)')
         $('#button-checkout').text('CHECKOUT ($' + totalCheckout + ')')
+        $('#confirm-checkout').text('CONFIRM PAYMENT ($' + totalCheckout + ')')
         localStorage.setItem('items', JSON.stringify(localItemsCart))
     })
 

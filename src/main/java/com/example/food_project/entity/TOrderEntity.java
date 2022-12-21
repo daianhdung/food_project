@@ -11,7 +11,9 @@ public class TOrderEntity {
     private int id;
 
     @Column(name = "estimate_ship")
-    private String estimateShip;
+    private int estimateShip;
+    @Column(name = "order_date")
+    private String orderDate;
 
     @Column(name = "deliver_address")
     private String deliverAddress;
@@ -34,12 +36,20 @@ public class TOrderEntity {
         this.id = id;
     }
 
-    public String getEstimateShip() {
+    public int getEstimateShip() {
         return estimateShip;
     }
 
-    public void setEstimateShip(String estimateShip) {
+    public void setEstimateShip(int estimateShip) {
         this.estimateShip = estimateShip;
+    }
+
+    public String getOrderDate() {
+        return orderDate;
+    }
+
+    public void setOrderDate(String orderDate) {
+        this.orderDate = orderDate;
     }
 
     public String getDeliverAddress() {

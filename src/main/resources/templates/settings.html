@@ -8,6 +8,15 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <link rel="icon" type="image/png" href="img/logo.png">
+ <style>
+  [type=file] {
+   position: absolute;
+   filter: alpha(opacity=0);
+   opacity: 0;
+   overflow: hidden;
+   width: 10px;
+  }
+ </style>
 <title>Osahan Eat - Online Food Ordering Website HTML Template</title>
 
  <link th:href="@{/vendor/fontawesome-free/css/all.min.css}" rel="stylesheet" type="text/css">
@@ -105,7 +114,7 @@
 <div class="modal fade" id="personalModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog">
 <div class="modal-content">
- <form action="" id="profileEdit" method="put">
+ <form action="" id="profileEdit" method="put" enctype="multipart/form-data">
   <div class="modal-header">
    <h5 class="modal-title" id="exampleModalLabel">Personal Information</h5>
    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -116,8 +125,9 @@
    <p class="text-dark mb-2 small">Profile image</p>
    <div class="d-flex align-items-center mb-4">
     <img user src="img/user1.png" class="img-fluid mr-3 rounded-circle">
-    <button id="upload-button" class="btn btn-primary mr-2 btn-sm px-3">Upload</button>
-    <button class="btn btn-outline-primary btn-sm px-3">Delete</button>
+    <input style="cursor: pointer;" type="file" id="upload-button" placeholder="Upload File" class="">
+    <label style="margin-top: 8px; cursor: pointer;" for="upload-button" class="btn btn-primary mr-2 btn-sm px-3">Upload File</label>
+    <button id="delete-img" type="button" class="btn btn-outline-primary btn-sm px-3">Delete</button>
    </div>
    <p class="text-dark mb-2 small">Profile details</p>
    <div class="d-flex align-items-center mb-3">
@@ -825,6 +835,7 @@
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon='{"rayId":"75c6f9410bc57d56","version":"2022.10.3","r":1,"token":"dd471ab1978346bbb991feaa79e6ce5c","si":100}' crossorigin="anonymous"></script>
 <script th:src="@{/js/setting.js}"></script>
 <script th:src="@{/js/index.js}"></script>
+<script th:src="@{/js/detail.js}"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script th:inline="javascript">
  var flag = /*[[${flag}]]*/ false;

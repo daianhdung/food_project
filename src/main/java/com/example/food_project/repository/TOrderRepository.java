@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TOrderRepository extends JpaRepository<TOrderEntity, Integer> {
 
-
+    TOrderEntity findByUserId(int userId);
 }

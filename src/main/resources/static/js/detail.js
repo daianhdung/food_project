@@ -1,4 +1,19 @@
 $(document).ready(function(){
+    $("[type=file]").on("change", function(){
+        // Name of file and placeholder
+        var This = $(this)
+        var file = this.files[0].name;
+        var dflt = $(this).attr("placeholder");
+        if($(this).val()!=""){
+            $(this).next().text(file);
+        } else {
+            $(this).next().text(dflt);
+        }
+        $('#delete-img').on('click', function (){
+            This.val().text('')
+        })
+    });
+
     $("#upload-button").click(function(){
         // $(':file').on('change', function () {
         //     var file = this.files[0];
@@ -9,8 +24,8 @@ $(document).ready(function(){
         //
         //     // Also see .name, .type
         // });
-        var form = $('#fileUploadForm')[0]
-
+        var form = $('#profileEdit')[0]
+        var data = new FormData(form);
         $.ajax({
             method: "POST",
             enctype: 'multipart/form-data',
@@ -19,13 +34,15 @@ $(document).ready(function(){
             data: data,
         }).done(function( result ) {
             if(result.success){
-
+                alert('success')
             }else{
-
+                alert('fail')
             }
         }).fail(
             alert(500)
         );
     })
+
+
 
 })

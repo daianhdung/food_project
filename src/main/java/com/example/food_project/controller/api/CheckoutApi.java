@@ -14,7 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 import static com.example.food_project.constants.ParamConstant.*;
 import static org.springframework.security.core.context.SecurityContextHolder.getContext;
 
-import java.util.List;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 @RestController
 @RequestMapping("api")
@@ -36,8 +39,26 @@ public class CheckoutApi {
         var authentication = getContext().getAuthentication();
         var user = userService.getUser(authentication.getName());
         TOrderEntity tOrder = new TOrderEntity();
+
+        //Create date.now
+        LocalDateTime myDateObj = LocalDateTime.now();
+        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formattedDate = myDateObj.format(myFormatObj);
+
+//        Timer timer = new Timer();
+//        TimerTask task = new TimerTask() {
+//            @Override
+//            public void run() {
+//                System.out.println("Success");
+//            }
+//        };
+//
+//        timer.schedule(task, 0);test2
+
         tOrder.setUser(user);
+        tOrder.setOrderDate((formattedDate));
         TOrderEntity savetOrder = tOrderService.newOrder(tOrder);
+
         foodOrderService.insertNewListFoodOrder(savetOrder.getId(), foodOrderEntityList);
 
         DataResponse dataResponse = new DataResponse();

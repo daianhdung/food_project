@@ -120,7 +120,8 @@ create table food_material(
 create table t_order(
                         id int auto_increment,
                         id_user int,
-                        estimate_ship timestamp,
+                        estimate_ship int,
+                        order_date timestamp,
                         deliver_address text,
 
                         primary key(id),
@@ -137,6 +138,7 @@ create table status(
 create table order_status(
                              id_order int,
                              id_status int,
+                             active varchar(10),
 
                              primary key(id_order,id_status),
                              foreign key(id_order) references t_order(id),
@@ -163,6 +165,16 @@ create table user_favor(
                            foreign key(id_user) references user(id),
                            foreign key(id_food) references food(id)
 );
+create table restaurant_favor(
+                                 id_user int,
+                                 id_restaurant int,
+                                 is_favor varchar(10) default 'false',
+                                 primary key(id_user,id_restaurant),
+                                 foreign key(id_user) references user(id),
+                                 foreign key(id_restaurant) references restaurant(id)
+);
+
+
 
 INSERT INTO category(image, name) VALUES ('mdi-fire', 'Popular');
 INSERT INTO category(image, name) VALUES ('mdi-motorbike', 'FastDelivery');
@@ -181,13 +193,13 @@ INSERT INTO restaurant(image, name) VALUES ('domino.png', 'Dominos');
 INSERT INTO restaurant(image, name) VALUES ('subway.png', 'Subway');
 INSERT INTO restaurant(image, name) VALUES ('test.png', 'Test');
 
-INSERT INTO food(image, name) VALUES ('food3.jpg', 'Tandori');
-INSERT INTO food(image, name) VALUES ('food4.jpg', 'Special Thaili');
-INSERT INTO food(image, name) VALUES ('food5.jpg', 'Diet Food');
-INSERT INTO food(image, name) VALUES ('food6.jpg', 'SandWich');
-INSERT INTO food(image, name) VALUES ('food1.jpg', 'Spicy Na Thai Pizza');
-INSERT INTO food(image, name) VALUES ('food2.jpg', 'Special Burger');
-INSERT INTO food(image, name) VALUES ('test.png', 'Test');
+INSERT INTO food(image, name, price) VALUES ('food3.jpg', 'Tandori', 5);
+INSERT INTO food(image, name, price) VALUES ('food4.jpg', 'Special Thaili', 8);
+INSERT INTO food(image, name, price) VALUES ('food5.jpg', 'Diet Food', 6);
+INSERT INTO food(image, name, price) VALUES ('food6.jpg', 'SandWich', 10);
+INSERT INTO food(image, name, price) VALUES ('food1.jpg', 'Spicy Na Thai Pizza', 12);
+INSERT INTO food(image, name, price) VALUES ('food2.jpg', 'Special Burger', 13);
+INSERT INTO food(image, name, price) VALUES ('test.png', 'Test', 10);
 
 INSERT INTO food_addon(name, price, id_food) VALUES ('Basmati rice', '3', 3);
 INSERT INTO food_addon(name, price, id_food) VALUES ('Brown rice', '2', 3);
@@ -207,3 +219,7 @@ INSERT INTO food_addon(name, price, id_food) VALUES ('Bulgur pilaf', '4', 5);
 INSERT INTO food_addon(name, price, id_food) VALUES ('Basmati rice', '3', 6);
 INSERT INTO food_addon(name, price, id_food) VALUES ('Brown rice', '2', 6);
 INSERT INTO food_addon(name, price, id_food) VALUES ('Bulgur pilaf', '4', 6);
+
+INSERT INTO status( name ) VALUES ("Order Preparing");
+INSERT INTO status( name ) VALUES ("On the way");
+INSERT INTO status( name ) VALUES ("Completed");
