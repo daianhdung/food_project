@@ -9,9 +9,13 @@ import javax.persistence.*;
 public class OrderStatusEntity {
 
     @Id
-    private int id_order;
+    @Column(name = "id_order")
+    private int idOrder;
     @Id
-    private int id_status;
+    @Column(name = "id_status")
+    private int idStatus;
+    @Column(name = "active")
+    private String active;
 
     @ManyToOne
     @JoinColumn(name = "id_order", insertable = false, updatable = false)
@@ -21,20 +25,28 @@ public class OrderStatusEntity {
     @JoinColumn(name = "id_status", insertable = false, updatable = false)
     private StatusEntity status;
 
-    public int getId_order() {
-        return id_order;
+    public int getIdOrder() {
+        return idOrder;
     }
 
-    public void setId_order(int id_order) {
-        this.id_order = id_order;
+    public void setIdOrder(int idOrder) {
+        this.idOrder = idOrder;
     }
 
-    public int getId_status() {
-        return id_status;
+    public int getIdStatus() {
+        return idStatus;
     }
 
-    public void setId_status(int id_status) {
-        this.id_status = id_status;
+    public void setIdStatus(int idStatus) {
+        this.idStatus = idStatus;
+    }
+
+    public String getActive() {
+        return active;
+    }
+
+    public void setActive(String active) {
+        this.active = active;
     }
 
     public TOrderEntity gettOrder() {

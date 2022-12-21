@@ -23,4 +23,6 @@ public interface UserFavorRepository extends JpaRepository<UserFavorEntity, Inte
 
     @Query(value = "SELECT id_food FROM user_favor as ur WHERE id_user = ?1 AND is_favor = 'true'", nativeQuery = true)
     List<Integer> getFavor(int idUser);
+
+
 }

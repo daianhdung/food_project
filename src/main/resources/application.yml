@@ -36,7 +36,7 @@ spring:
             enable: true
 
 file:
-    upload-dir: food_project\src\main\resources\static\img
+    upload-dir: food_project\src\main\resources\static\img\userimg
 
 
 

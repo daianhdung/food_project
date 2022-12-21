@@ -1,6 +1,7 @@
 package com.example.food_project.controller.api;
 
 
+import com.example.food_project.payload.response.DataResponse;
 import com.example.food_project.services.FileUploadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -24,7 +25,11 @@ public class FileUploadController {
     @PostMapping("/upload")
     public ResponseEntity<?> uploadFile(@RequestParam("file")MultipartFile file){
         fileUploadService.storedFile(file);
-        return new ResponseEntity<>("", HttpStatus.OK);
+
+        DataResponse dataResponse = new DataResponse();
+        dataResponse.setStatus(200);
+        dataResponse.setSuccess(true);
+        return new ResponseEntity<>(dataResponse, HttpStatus.OK);
     }
 
     @GetMapping("/{fileName}")

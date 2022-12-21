@@ -4,27 +4,38 @@ import java.io.Serializable;
 
 public class OrderStatusId implements Serializable {
 
-    private int id_order;
-    private int id_status;
+    private int idOrder;
+    private int idStatus;
+    private String active;
 
-    public OrderStatusId(int id_order, int id_status) {
-        this.id_order = id_order;
-        this.id_status = id_status;
+    public OrderStatusId(int idOrder, int idStatus, String active) {
+        this.idOrder = idOrder;
+        this.idStatus = idStatus;
+        this.active = active;
     }
 
-    public int getId_order() {
-        return id_order;
+    public OrderStatusId(){}
+    public int getIdOrder() {
+        return idOrder;
     }
 
-    public void setId_order(int id_order) {
-        this.id_order = id_order;
+    public void setIdOrder(int idOrder) {
+        this.idOrder = idOrder;
     }
 
-    public int getId_status() {
-        return id_status;
+    public int getIdStatus() {
+        return idStatus;
     }
 
-    public void setId_status(int id_status) {
-        this.id_status = id_status;
+    public void setIdStatus(int idStatus) {
+        this.idStatus = idStatus;
+    }
+
+    public String getActive() {
+        return active;
+    }
+
+    public void setActive(String active) {
+        this.active = active;
     }
 }
