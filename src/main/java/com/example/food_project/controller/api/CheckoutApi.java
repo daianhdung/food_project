@@ -53,7 +53,7 @@ public class CheckoutApi {
 //            }
 //        };
 //
-//        timer.schedule(task, 0);test
+//        timer.schedule(task, 0);test2
 
         tOrder.setUser(user);
         tOrder.setOrderDate((formattedDate));
