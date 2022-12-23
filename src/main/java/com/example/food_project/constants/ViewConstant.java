@@ -13,4 +13,5 @@ public class ViewConstant {
     public static final String DETAIL_VIEW = "/detail";
     public static final String FAVORTITE_VIEW = "/favourite";
     public static final String EXPLORE_VIEW = "/explore";
+    public static final String ORDER_VIEW = "/order";
 }

@@ -25,8 +25,8 @@
       <span>Favourities</span></a>
   </li>
 
-  <li th:classappend="${path == '/orders' ? 'active' : ''}" class="nav-item">
-    <a class="nav-link" href="orders.html">
+  <li th:classappend="${path == '/order' ? 'active' : ''}" class="nav-item">
+    <a class="nav-link" th:href="@{/order}">
       <i class="mdi mdi-book-open"></i>
       <span>Orders</span></a>
   </li>

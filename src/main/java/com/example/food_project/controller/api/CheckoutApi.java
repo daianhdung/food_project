@@ -57,6 +57,7 @@ public class CheckoutApi {
 
         tOrder.setUser(user);
         tOrder.setOrderDate((formattedDate));
+        tOrder.setEstimateShip(60);
         TOrderEntity savetOrder = tOrderService.newOrder(tOrder);
 
         foodOrderService.insertNewListFoodOrder(savetOrder.getId(), foodOrderEntityList);

@@ -158,7 +158,10 @@ $("#foodPrice").click(function() {
         }).done(function (result) {
             if (result.success) {
                 localStorage.removeItem('items')
-                showToastModal('success', 'Thành công')
+                showToastModal('success', 'Order thành công')
+                window.setTimeout(function(){
+                    window.location.href = "/order";
+                }, 2300)
             } else {
                 alert('Thất bại')
             }

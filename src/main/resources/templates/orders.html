@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <!-- Mirrored from askbootstrap.com/preview/osahan-eat/theme-sidebar/orders.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 19 Oct 2022 05:04:56 GMT -->
 <head>
@@ -8,238 +8,50 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<link rel="icon" type="image/png" href="img/logo.png">
+<link rel="icon" type="image/png" th:href="@{/img/logo.png}">
 <title>Osahan Eat - Online Food Ordering Website HTML Template</title>
 
-<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+ <link th:href="@{/vendor/fontawesome-free/css/all.min.css}" rel="stylesheet" type="text/css">
 
-<link href="css/osahan.css" rel="stylesheet">
+ <link th:href="@{/css/osahan.css}" rel="stylesheet">
 
-<link href="font/stylesheet.css" rel="stylesheet">
+ <link th:href="@{/font/stylesheet.css}" rel="stylesheet">
 
-<link href="vendor/mdi-icons/css/materialdesignicons.min.css" rel="stylesheet">
+ <link th:href="@{/vendor/mdi-icons/css/materialdesignicons.min.css}" rel="stylesheet">
 
-<link href="css/custom.css" rel="stylesheet">
+ <link th:href="@{/css/custom.css}" rel="stylesheet">
+
+
 </head>
 <body id="page-top">
 
 <div id="wrapper">
 
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-<a class="sidebar-brand d-flex align-items-center" href="index.html">
-<div class="sidebar-brand-icon">
-<img src="img/logo.png" class="img-fluid">
-</div>
-</a>
-
-<li class="nav-item">
-<a class="nav-link" href="index.html">
-<i class="mdi mdi-home-variant-outline"></i>
-<span>Home</span></a>
-</li>
-
-<li class="nav-item">
-<a class="nav-link" href="explore.html">
-<i class="mdi mdi-grid-large"></i>
-<span>Explore</span></a>
-</li>
-
-<li class="nav-item">
-<a class="nav-link" href="favourities.html">
-<i class="mdi mdi-bookmark-outline"></i>
-<span>Favourities</span></a>
-</li>
-
-<li class="nav-item active">
-<a class="nav-link" href="orders.html">
-<i class="mdi mdi-book-open"></i>
-<span>Orders</span></a>
-</li>
-
-<li class="nav-item">
-<a class="nav-link d-flex align-items-center" href="messages.html">
-<i class="mdi mdi-message-text-outline mr-2"></i>
-<span>Messages</span>
-<span class="rounded-circle bg-white text-primary ml-auto px-2 py-1">2</span></a>
-</li>
-
-<li class="nav-item">
-<a class="nav-link" href="settings.html">
-<i class="mdi mdi-cog"></i>
-<span>Settings</span></a>
-</li>
-
-<li class="nav-item">
-<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-<i class="fas fa-fw fa-cog"></i>
-<span>Extra Pages</span>
-</a>
-<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-<div class="bg-white py-2 collapse-inner rounded">
-<h6 class="collapse-header">Pages:</h6>
-<a class="collapse-item" href="detail.html">Details</a>
-<a class="collapse-item" href="listing.html">Listing</a>
-<a class="collapse-item" href="messages.html">Messages</a>
-<a class="collapse-item" href="search.html">Search</a>
-<a class="collapse-item" href="buttons.html">Components</a>
-<a class="collapse-item" href="404.html">Page Not Found</a>
-<h6 class="collapse-header">Account:</h6>
-<a class="collapse-item" href="signin.html">Signin</a>
-<a class="collapse-item" href="signup.html">Signup</a>
-<a class="collapse-item" href="forgot.html">Forgot Password</a>
-</div>
-</div>
-</li>
-
-<div class="bg-white m-3 p-3 sidebar-alert rounded text-center alert fade show d-none d-md-inline" role="alert">
-<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-<span aria-hidden="true">&times;</span>
-</button>
-<i class="mdi mdi-food mb-3"></i>
-<p class="text-black mb-1">Free delivery on<br>all orders over <span class="text-primary">$25</span></p>
-<p class="small">It is a limited time offer that will expire soon.</p>
-<a href="explore.html" class="btn btn-primary btn-block btn-sm">Order now <i class="pl-3 fas fa-long-arrow-alt-right"></i></a>
-</div>
-
-<div class="d-none d-md-block">
-<div class="user d-flex align-items-center p-3">
-<div class="pr-3"><i class="mdi mdi-account-circle-outline text-white h3 mb-0"></i></div>
-<div>
-<p class="mb-0 text-white">Mark Clarke</p>
-<p class="mb-0 text-white-50 small"><a href="https://askbootstrap.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="12776a737f627e7752757f737b7e3c717d7f">[email&#160;protected]</a></p>
-</div>
-</div>
-</div>
-
-<hr class="sidebar-divider d-none d-md-block">
-
-<div class="text-center d-none d-md-inline">
-<button class="rounded-circle border-0" id="sidebarToggle"></button>
-</div>
-</ul>
+ <div th:replace="fragments/menu :: menu"></div>
 
 
 <div id="content-wrapper" class="d-flex flex-column">
 
 <div id="content">
 
-<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow-sm osahan-nav-top">
-
-<button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-<i class="fa fa-bars"></i>
-</button>
-
-<ul class="navbar-nav">
-
-<li class="nav-item dropdown no-arrow d-sm-none">
-<a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-<i class="fas fa-search fa-fw"></i>
-</a>
-
-<div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
-<form class="form-inline mr-auto w-100 navbar-search">
-<div class="input-group">
-<input type="text" class="form-control bg-light" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-<div class="input-group-append">
-<button class="btn btn-primary" type="button">
-<i class="mdi mdi-magnify"></i>
-</button>
-</div>
-</div>
-</form>
-</div>
-</li>
-
-<li class="nav-item dropdown no-arrow mx-2 osahan-t-loc">
-<a class="nav-link dropdown-toggle text-dark" href="#" data-toggle="modal" data-target="#addressModal">
-<span class="mdi mdi-crosshairs-gps"></span><span class="ml-2">San Frnciso, california</span>
-</a>
-</li>
-
-<li class="nav-item dropdown no-arrow mx-2 osahan-t-pu">
-<a class="nav-link dropdown-toggle text-dark" href="orders.html">
-<i class="mdi mdi-shopping text-danger"></i><span class="ml-2">Pick up</span>
-</a>
-</li>
-
-<li class="nav-item dropdown no-arrow mx-2 osahan-t-bd">
-<a class="nav-link dropdown-toggle text-dark" data-toggle="modal" data-target="#mycoupansModal" href="#">
-<i class="mdi mdi-sack-percent text-warning"></i><span class="ml-2">Best Deals</span>
-</a>
-</li>
-</ul>
-
-<div class="ml-auto">
-<a href="search.html">
-<form class="d-none d-sm-inline-block form-inline mx-2 my-2 my-md-0 mw-100 navbar-search">
-<div class="input-group">
-<input type="text" class="form-control bg-light" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-<div class="input-group-append">
-<button class="btn btn-primary" type="button">
-<i class="mdi mdi-magnify"></i>
-</button>
-</div>
-</div>
-</form>
-</a>
-<a href="#" class="btn btn-primary " data-toggle="modal" data-target="#filtersModal"><i class="mdi mdi-filter-variant"></i></a>
-<a href="#" class="btn btn-danger" data-toggle="modal" data-target="#cartModal"><i class="mdi mdi-shopping-outline"></i></a>
-</div>
-</nav>
+ <div th:replace="fragments/navbar :: navbar"></div>
 
 
 <div class="container-fluid">
 
 
 <div class="d-flex align-items-center justify-content-between mb-3 mt-2">
-<h5 class="mb-0">Upcoming orders</h5>
-<a href="#" class="small text-dark bg-white shadow-sm px-2 py-1 rounded"><i class="mdi mdi-map-outline mr-2"></i>20 km <i class="ml-1 mdi mdi-chevron-down"></i></a>
+<h5 class="mb-0">Preparing orders</h5>
+<a href="#" class="small text-dark bg-white shadow-sm px-2 py-1 rounded"><i class="mdi mdi-map-outline mr-2"></i>..Preparing<i class="ml-1 mdi mdi-chevron-down"></i></a>
 </div>
 
 <div class="row">
 
-<div class="col-md-6 col-lg-4">
+<div th:each="item: ${listPrepare}" class="col-md-6 col-lg-4">
 <div class="bg-white shadow-sm p-3 rounded mb-4">
 <div class="d-flex align-items-center mb-3">
-<p class="font-weight-bold text-black mb-0">Pizza Hut</p>
-<p class="badge badge-light mb-0 ml-auto"><i class="mdi mdi-map-clock"></i> On the way</p>
-</div>
-<div class="d-flex align-items-center mb-4">
-<div>
-<p class="mb-0 bg-light rounded p-2 osahan-icon"><i class="mdi mdi-clock-outline"></i></p>
-</div>
-<div class="ml-3">
-<p class="mb-0">Estimated arrival</p>
-<p class="font-weight-bold mb-0 text-dark h5">35 min</p>
-</div>
-<div class="ml-auto">
-<a class="btn btn-primary text-white" data-toggle="modal" data-target="#trackModal">Track</a>
-</div>
-</div>
-<div class="row m-0">
-<div class="col-2 p-0">
-<div class="progress osahan-progress">
-<div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="Order Confirmed"></div>
-</div>
-</div>
-<div class="col-4 px-1">
-<div class="progress osahan-progress">
-<div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="Order Packed"></div>
-</div>
-</div>
-<div class="col-6 p-0">
-<div class="progress osahan-progress">
-<div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="On the way"></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="col-md-6 col-lg-4">
-<div class="bg-white shadow-sm p-3 rounded mb-4">
-<div class="d-flex align-items-center mb-3">
-<p class="font-weight-bold text-black mb-0">Burger king</p>
+<p th:text="${item.getFoodName()}" class="font-weight-bold text-black mb-0">Burger king</p>
 <p class="badge badge-info mb-0 ml-auto"><i class="mdi mdi-timelapse"></i> Order Preparing</p>
 </div>
 <div class="d-flex align-items-center mb-4">
@@ -247,8 +59,8 @@
 <p class="mb-0 bg-light rounded p-2 osahan-icon"><i class="mdi mdi-clock-outline"></i></p>
 </div>
 <div class="ml-3">
-<p class="mb-0">Estimated arrival</p>
-<p class="font-weight-bold mb-0 text-dark h5">60 min</p>
+<p id="estimate-prepare" class="mb-0">Estimated arrival</p>
+<p th:id="${item.getId()}" th:text="${item.getEstimateShip()}" class="font-weight-bold mb-0 text-dark h5">60 min</p>
 </div>
 <div class="ml-auto">
 <a class="btn btn-primary text-white" data-toggle="modal" data-target="#trackModal">Track</a>
@@ -275,6 +87,53 @@
 </div>
 </div>
 
+ <div class="d-flex align-items-center justify-content-between mb-3 mt-2">
+  <h5 class="mb-0">On the way orders</h5>
+  <a href="#" class="small text-dark bg-white shadow-sm px-2 py-1 rounded"><i class="mdi mdi-map-outline mr-2"></i>20 km <i class="ml-1 mdi mdi-chevron-down"></i></a>
+ </div>
+
+ <div class="row">
+
+  <div th:each="item: ${listOnWay}" class="col-md-6 col-lg-4">
+   <div class="bg-white shadow-sm p-3 rounded mb-4">
+    <div class="d-flex align-items-center mb-3">
+     <p th:text="${item.getFoodName()}" class="font-weight-bold text-black mb-0">Pizza Hut</p>
+     <p class="badge badge-light mb-0 ml-auto"><i class="mdi mdi-map-clock"></i> On the way</p>
+    </div>
+    <div class="d-flex align-items-center mb-4">
+     <div>
+      <p class="mb-0 bg-light rounded p-2 osahan-icon"><i class="mdi mdi-clock-outline"></i></p>
+     </div>
+     <div class="ml-3">
+      <p id="estimate-onway" class="mb-0">Estimated arrival</p>
+      <p th:id="${item.getId()}" th:text="${item.getEstimateShip()}" class=" font-weight-bold mb-0 text-dark h5">35 min</p>
+     </div>
+     <div class="ml-auto">
+      <a class="btn btn-primary text-white" data-toggle="modal" data-target="#trackModal">Track</a>
+     </div>
+    </div>
+    <div class="row m-0">
+     <div class="col-2 p-0">
+      <div class="progress osahan-progress">
+       <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="Order Confirmed"></div>
+      </div>
+     </div>
+     <div class="col-4 px-1">
+      <div class="progress osahan-progress">
+       <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="Order Packed"></div>
+      </div>
+     </div>
+     <div class="col-6 p-0">
+      <div class="progress osahan-progress">
+       <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="On the way"></div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+
+ </div>
+
 <div class="d-flex align-items-center justify-content-between mb-3 mt-2">
 <h5 class="mb-0">Previous orders</h5>
 <a href="#" class="small text-dark bg-white shadow-sm px-2 py-1 rounded"><i class="mdi mdi-grid-large mr-2"></i>Today <i class="ml-1 mdi mdi-chevron-down"></i></a>
@@ -282,52 +141,10 @@
 
 <div class="row">
 
-<div class="col-lg-4 col-md-6">
+<div th:each="item: ${listComplete}" class="col-lg-4 col-md-6">
 <div class="bg-white shadow-sm rounded p-3 mb-4">
 <div class="d-flex align-items-center mb-1">
-<h6 class="mb-0">Mac Donalds</h6>
-<p class="badge badge-success mb-0 ml-auto"><i class="mdi mdi-check-circle"></i> Completed</p>
-</div>
-<div class="d-flex align-items-center">
-<p class="small"><i class="mdi mdi-calendar mr-1"></i>September 16, 2021 <span class="ml-2"><i class="mdi mdi-clock-outline mr-1"></i>11:54 PM</span></p>
-</div>
-<p class="text-dark mb-2"><span class="mr-2 text-black">1</span>Delicious Cheese pie</p>
-<p class="text-dark mb-2"><span class="mr-2 text-black">2</span>Peperoni pie</p>
-<div class="d-flex align-items-center row pt-2 mt-3">
-<div class="col-6 pr-2">
-<a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#detailsModal">Detials</a>
-</div>
-<div class="col-6 pl-2">
-<a href="settings.html" class="btn btn-outline-primary btn-block">Get help</a>
-</div>
-</div>
-</div>
-</div>
-<div class="col-lg-4 col-md-6">
-<div class="bg-white shadow-sm rounded p-3 mb-4">
-<div class="d-flex align-items-center mb-1">
-<h6 class="mb-0">Dominos</h6>
-<p class="badge badge-success mb-0 ml-auto"><i class="mdi mdi-check-circle"></i> Completed</p>
-</div>
-<div class="d-flex align-items-center">
-<p class="small"><i class="mdi mdi-calendar mr-1"></i>September 16, 2021 <span class="ml-2"><i class="mdi mdi-clock-outline mr-1"></i>11:54 PM</span></p>
-</div>
-<p class="text-dark mb-2"><span class="mr-2 text-black">1</span>Delicious Cheese pie</p>
-<p class="text-dark mb-2"><span class="mr-2 text-black">2</span>Peperoni pie</p>
-<div class="d-flex align-items-center row pt-2 mt-3">
- <div class="col-6 pr-2">
-<a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#detailsModal">Detials</a>
-</div>
-<div class="col-6 pl-2">
-<a href="settings.html" class="btn btn-outline-primary btn-block">Get help</a>
-</div>
-</div>
-</div>
-</div>
-<div class="col-lg-4 col-md-6">
-<div class="bg-white shadow-sm rounded p-3 mb-4">
-<div class="d-flex align-items-center mb-1">
-<h6 class="mb-0">Subway</h6>
+<h6 th:text="${item.getFoodName()}" class="mb-0">Mac Donalds</h6>
 <p class="badge badge-success mb-0 ml-auto"><i class="mdi mdi-check-circle"></i> Completed</p>
 </div>
 <div class="d-flex align-items-center">
@@ -346,61 +163,13 @@
 </div>
 </div>
 
-<div class="col-lg-4 col-md-6">
-<div class="bg-white shadow-sm rounded p-3 mb-4">
-<div class="d-flex align-items-center mb-1">
-<h6 class="mb-0">Burger King</h6>
-<p class="badge badge-success mb-0 ml-auto"><i class="mdi mdi-check-circle"></i> Completed</p>
-</div>
-<div class="d-flex align-items-center">
-<p class="small"><i class="mdi mdi-calendar mr-1"></i>September 16, 2021 <span class="ml-2"><i class="mdi mdi-clock-outline mr-1"></i>11:54 PM</span></p>
-</div>
-<p class="text-dark mb-2"><span class="mr-2 text-black">1</span>Delicious Cheese pie</p>
-<p class="text-dark mb-2"><span class="mr-2 text-black">2</span>Peperoni pie</p>
-<div class="d-flex align-items-center row pt-2 mt-3">
-<div class="col-6 pr-2">
-<a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#detailsModal">Detials</a>
-</div>
-<div class="col-6 pl-2">
-<a href="settings.html" class="btn btn-outline-primary btn-block">Get help</a>
-</div>
-</div>
-</div>
-</div>
-<div class="col-lg-4 col-md-6">
-<div class="bg-white shadow-sm rounded p-3 mb-4">
-<div class="d-flex align-items-center mb-1">
-<h6 class="mb-0">Osahan Eat</h6>
-<p class="badge badge-success mb-0 ml-auto"><i class="mdi mdi-check-circle"></i> Completed</p>
-</div>
-<div class="d-flex align-items-center">
-<p class="small"><i class="mdi mdi-calendar mr-1"></i>September 16, 2021 <span class="ml-2"><i class="mdi mdi-clock-outline mr-1"></i>11:54 PM</span></p>
-</div>
-<p class="text-dark mb-2"><span class="mr-2 text-black">1</span>Delicious Cheese pie</p>
-<p class="text-dark mb-2"><span class="mr-2 text-black">2</span>Peperoni pie</p>
-<div class="d-flex align-items-center row pt-2 mt-3">
-<div class="col-6 pr-2">
-<a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#detailsModal">Detials</a>
-</div>
-<div class="col-6 pl-2">
-<a href="settings.html" class="btn btn-outline-primary btn-block">Get help</a>
-</div>
-</div>
-</div>
-</div>
 </div>
 </div>
 
 </div>
 
 
-<footer class="sticky-footer bg-white">
-<div class="container my-auto">
-<div class="copyright text-center my-auto">
-<span>Copyright &copy; Your Website 2020</span>
-</div>
-</div>
-</footer>
+ <div th:replace="fragments/footer :: footer"></div>
 
 </div>
 
@@ -647,141 +416,10 @@
 </div>
 </div>
 
-<div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-<div class="modal-dialog">
-<div class="modal-content">
-<div class="modal-header">
-<h5 class="modal-title" id="exampleModalLabel">My cart <span class="small">(2 items)</span></h5>
-<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-<span aria-hidden="true">&times;</span>
-</button>
-</div>
-<div class="modal-body osahan-my-cart">
-<a href="#" class="text-dark d-flex align-items-center mb-3" data-toggle="modal" data-target="#myaddressModal">
-<div>
-<p class="mb-0 text-danger">Delivered to</p>
-<p class="mb-0 small">300 Post Street San Francico, CA</p>
-</div>
-<div class="ml-auto">
-<p class="mb-0 text-info">Edit<i class="mdi h6 m-0 mdi-chevron-right"></i></p>
-</div>
-</a>
-<div class="details-page border-top pt-3 osahan-my-cart-item">
-<h6 class="mb-3">Pizza Hut</h6>
-<div class="d-flex align-items-center mb-3">
-<div class="mr-2"><img src="img/pizza.png" class="img-fluid rounded"></div>
-<div class="small text-black-50">1 x</div>
-<div class="ml-2">
-<p class="mb-0 text-black">Cheese pie</p>
-<p class="mb-0 small">$15</p>
-</div>
-<a href="#" class="ml-auto"><i class="btn btn-light text-danger mdi mdi-trash-can-outline rounded"></i></a>
-</div>
-<div class="d-flex align-items-center mb-3">
-<div class="mr-2"><img src="img/burger.png" class="img-fluid rounded"></div>
-<div class="small text-black-50">2 x</div>
-<div class="text-dark ml-2">
-<p class="mb-0 text-black">Peperoni pie</p>
-<p class="mb-0 small">$23</p>
-</div>
-<a href="#" class="ml-auto"><i class="btn btn-light text-danger mdi mdi-trash-can-outline rounded"></i></a>
-</div>
-<div class="d-flex align-items-center mb-3">
-<div class="mr-2"><img src="img/burger2.png" class="img-fluid rounded"></div>
-<div class="small text-black-50">3 x</div>
-<div class="text-dark ml-2">
-<p class="mb-0 text-black">Osahan Burger</p>
-<p class="mb-0 small">$50</p>
-</div>
-<a href="#" class="ml-auto"><i class="btn btn-light text-danger mdi mdi-trash-can-outline rounded"></i></a>
-</div>
-<div class="my-3"><a href="#" data-toggle="modal" data-target="#myitemsModal" class="text-primary"><i class="mdi mdi-plus mr-2"></i> Add more items</a></div>
-<a href="#" class="d-flex align-items-center mb-3" data-toggle="modal" data-target="#mycoupansModal">
-<div class="mr-3 bg-light rounded p-2 osahan-icon"><i class="mdi mdi-motorbike"></i></div>
-<div>
-<p class="mb-0 text-dark">Delivery</p>
-<p class="mb-0 small text-black-50">$0</p>
-</div>
-</a>
-<a href="#" class="d-flex align-items-center mb-3" data-toggle="modal" data-target="#mycoupansModal">
-<div class="mr-3 bg-light rounded p-2 osahan-icon"><i class="mdi mdi-percent"></i></div>
-<div>
-<p class="mb-0 text-dark">Promo code</p>
-<p class="mb-0 small text-black-50">HFXWO</p>
-</div>
-<div class="ml-auto"><button class="btn btn-primary"><i class="mdi mdi-plus"></i></button></div>
-</a>
-</div>
-</div>
-<div class="modal-footer justify-content-start osahan-my-cart-footer">
-<div class="row w-100">
-<div class="col-2 px-0"><button class="btn btn-warning btn-block" data-toggle="modal" data-target="#mysplitModal"><i class="mdi mdi-account-plus-outline"></i></button></div>
-<div class="col-10 pr-0"><button class="btn btn-primary btn-block" data-toggle="modal" data-target="#checkoutModal">Checkout ($53.00)</button></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-<div class="modal fade" id="checkoutModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-<div class="modal-dialog">
-<div class="modal-content">
-<div class="modal-header">
-<h5 class="modal-title" id="exampleModalLabel">Checkout</h5>
-<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-<span aria-hidden="true">&times;</span>
-</button>
-</div>
-<div class="modal-body">
-<p class="text-dark mb-2 small">Payment methods</p>
-<div class="btn-group btn-group-toggle mb-3" data-toggle="buttons">
-<label class="btn osahan-radio btn-light btn-sm rounded active">
-<input type="radio" name="options" id="option1" checked> <i class="mdi mdi-credit-card-outline"></i> Card
-</label>
-<label class="btn osahan-radio btn-light btn-sm rounded">
-<input type="radio" name="options" id="option2"> <i class="mdi mdi-currency-usd"></i> COD
-</label>
-<label class="btn osahan-radio btn-light btn-sm rounded">
-<input type="radio" name="options" id="option3"> <i class="fab fa-paypal"></i> Paypal
-</label>
-</div>
-<h6 class="mb-3">My cards <span class="small">(2)</span></h6>
-<div class="btn-group btn-group-toggle osahan-card" data-toggle="buttons">
-<label class="btn osahan-radio osahan-card-pay btn-light btn-sm rounded mb-2 active w-100">
-<input type="radio" name="options" id="option1" checked>
-<div class="d-flex align-items-center card-detials small mb-3">
-<p class="small"><i class="mdi mdi-chip"></i></p>
-<p class="ml-auto d-flex align-items-center">
-<span class="card-no mr-2"><i class="mdi mdi-circle"></i> <i class="mdi mdi-circle"></i> <i class="mdi mdi-circle"></i> <i class="mdi mdi-circle"></i></span>
-<span class="small">1211</span>
-</p>
-</div>
-<h1 class="mb-0">Mastercard</h1>
-<p class="small mb-1">Platinum</p>
-<p class="text-right mb-0"><i class="fab fa-cc-mastercard text-warning"></i></p>
-</label>
-<label class="btn osahan-radio osahan-card-pay btn-light btn-sm rounded mb-2 w-100">
-<input type="radio" name="options" id="option2">
-<div class="d-flex align-items-center card-detials small mb-3">
-<p class="small"><i class="mdi mdi-chip"></i></p>
-<p class="ml-auto d-flex align-items-center">
-<span class="card-no mr-2"><i class="mdi mdi-circle"></i> <i class="mdi mdi-circle"></i> <i class="mdi mdi-circle"></i> <i class="mdi mdi-circle"></i></span>
-<span class="small">2277</span>
-</p>
-</div>
-<h1 class="mb-0">Visa Debit</h1>
-<p class="small mb-1">Plantinum</p>
-<p class="text-right mb-0"><i class="fab fa-cc-visa"></i></p>
-</label>
-</div>
-<a href="#" data-toggle="modal" data-target="#paymentsModal" class="btn btn-light btn-block"><i class="mdi mdi-plus"></i> Add</a>
-</div>
-<div class="modal-footer justify-content-start">
-<a href="orders.html" class="btn btn-primary btn-block">Confirm payment ($53.00)</a>
-</div>
-</div>
-</div>
-</div>
+<!--modal checkout-->
+<div th:replace="fragments/modal-checkout :: modal-checkout"></div>
+<!--Checkout confirm-->
+<div th:replace="fragments/modal-checkout :: modal-checkout-confirm"></div>
 
 <div class="modal fade" id="myaddressModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 <div class="modal-dialog">
@@ -954,19 +592,60 @@
 </div>
 </div>
 
-<script data-cfasync="false" src="../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="vendor/jquery/jquery.min.js" type="79f634dff3902d0aee41346d-text/javascript"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js" type="79f634dff3902d0aee41346d-text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script th:src="@{/js/index.js}"></script>
+<script th:src="@{/js/jquery.countdown.min.js}"></script>
+<script data-cfasync="false" th:src="@{/js/email-decode.min.js}"></script>
+<script th:src="@{/vendor/jquery/jquery.min.js}" type="79f634dff3902d0aee41346d-text/javascript"></script>
+<script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}" type="79f634dff3902d0aee41346d-text/javascript"></script>
 
-<script src="vendor/jquery-easing/jquery.easing.min.js" type="79f634dff3902d0aee41346d-text/javascript"></script>
+<script th:src="@{/vendor/jquery-easing/jquery.easing.min.js}" type="79f634dff3902d0aee41346d-text/javascript"></script>
 
-<script src="js/osahan.min.js" type="79f634dff3902d0aee41346d-text/javascript"></script>
-
+<script th:src="@{/js/osahan.min.js}" type="79f634dff3902d0aee41346d-text/javascript"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script type="79f634dff3902d0aee41346d-text/javascript">
         $(function() {
             $('[data-toggle="tooltip"]').tooltip()
         })
     </script>
-<script src="../../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="79f634dff3902d0aee41346d-|49" defer=""></script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon='{"rayId":"75c6f93e8eea7d56","version":"2022.10.3","r":1,"token":"dd471ab1978346bbb991feaa79e6ce5c","si":100}' crossorigin="anonymous"></script>
+<script th:src="@{/js/rocket-loader.min.js}" data-cf-settings="79f634dff3902d0aee41346d-|49" defer=""></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon='{"rayId":"75c6f93e8eea7d56","version":"2022.10.3","r":1,"token":"dd471ab1978346bbb991feaa79e6ce5c","si":100}' crossorigin="anonymous"></script>
+
+<script th:inline="javascript">
+ $(document).ready(function() {
+  /*<![CDATA[*/
+  /*[# th:each="item : ${listPrepare}"]*/
+
+  var id = '#'+ /*[[${item.getId()}]]*/;
+  $(id).countdown(/*[[${item.getEndShip()}]]*/).on('update.countdown', function (event) {
+   var $this = $(this).html(event.strftime(''
+           + '<span>%M</span> min '
+           + '<span>%S</span> sec'));
+  }).on('finish.countdown', function() {
+   $(this).hide();
+   $('#estimate-prepare').text()
+  });
+
+  /*[/]*/
+
+  /*[# th:each="item : ${listOnWay}"]*/
+
+ var id = '#'+ /*[[${item.getId()}]]*/;
+  $(id).countdown(/*[[${item.getEndShip()}]]*/).on('update.countdown', function (event) {
+   var $this = $(this).html(event.strftime(''
+           + '<span>%M</span> min '
+           + '<span>%S</span> sec'));
+  }).on('finish.countdown', function() {
+   $(this).hide();
+   $('#estimate-onway').text('Food arrived !!')
+  });
+  /*[/]*/
+
+
+  /*]]>*/
+ })
+</script>
+
 </body>
 
 <!-- Mirrored from askbootstrap.com/preview/osahan-eat/theme-sidebar/orders.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 19 Oct 2022 05:04:57 GMT -->
