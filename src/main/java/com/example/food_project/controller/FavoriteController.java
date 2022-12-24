@@ -35,8 +35,8 @@ public class FavoriteController {
     @Autowired
     RestaurantFavorService restaurantFavorService;
 
-    @GetMapping()
-    public ModelAndView favoriteView(){
+    @GetMapping("")
+    public ModelAndView favoriteRestaurant(){
         var client = authenticationUtil.getAccount();
         var mav = new ModelAndView(FAVORTITE_TEMP);
         var authentication = getContext().getAuthentication();
@@ -45,10 +45,32 @@ public class FavoriteController {
             var user = userService.getUser(authentication.getName());
             mav.addObject(CLIENT_PARAM, user);
             mav.addObject(SIGNIN_PARAM, true);
-            List<Integer> foodsId = userFavorService.getFavor(client.getId());
             List<Integer> restausId = restaurantFavorService.getFavorRes(client.getId());
-            mav.addObject("foodsFavor", foodService.findAllFavourite(foodsId));
+            mav.addObject("restaurantSize", restausId.size());
+            List<Integer> foodsId = userFavorService.getFavor(client.getId());
+            mav.addObject("foodSize", foodsId.size());
             mav.addObject("restaurantsFavor", restaurantService.findAllFavourRes(restausId));
+        }else {
+            mav.addObject(SIGNIN_PARAM, false);
+        }
+        return mav;
+    }
+
+    @GetMapping("/food")
+    public ModelAndView favoriteFood(){
+        var client = authenticationUtil.getAccount();
+        var mav = new ModelAndView(FAVORTITE_TEMP);
+        var authentication = getContext().getAuthentication();
+        mav.addObject("path", FAVORTITE_VIEW + "/food");
+        if(client != null){
+            var user = userService.getUser(authentication.getName());
+            mav.addObject(CLIENT_PARAM, user);
+            mav.addObject(SIGNIN_PARAM, true);
+            List<Integer> restausId = restaurantFavorService.getFavorRes(client.getId());
+            mav.addObject("restaurantSize", restausId.size());
+            List<Integer> foodsId = userFavorService.getFavor(client.getId());
+            mav.addObject("foodSize", foodsId.size());
+            mav.addObject("foodsFavor", foodService.findAllFavourite(foodsId));
         }else {
             mav.addObject(SIGNIN_PARAM, false);
         }
