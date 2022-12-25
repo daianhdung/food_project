@@ -2,6 +2,7 @@ package com.example.food_project.controller;
 
 import com.example.food_project.dto.TOrderDTO;
 import com.example.food_project.entity.TOrderEntity;
+import com.example.food_project.services.CategoryService;
 import com.example.food_project.services.OrderStatusService;
 import com.example.food_project.services.TOrderService;
 import com.example.food_project.services.UserService;
@@ -37,6 +38,8 @@ public class OrderController {
     OrderStatusService orderStatusService;
     @Autowired
     TOrderService tOrderService;
+    @Autowired
+    CategoryService categoryService;
 
     @GetMapping()
     public ModelAndView orderView() {
@@ -44,7 +47,7 @@ public class OrderController {
         var mav = new ModelAndView(ORDER_TEMP);
         mav.addObject("path", ORDER_VIEW);
         var authentication = getContext().getAuthentication();
-
+        mav.addObject("listCategory", categoryService.getAll());
 
         if (client != null) {
             var user = userService.getUser(authentication.getName());

@@ -1,5 +1,6 @@
 package com.example.food_project.controller;
 
+import com.example.food_project.services.CategoryService;
 import com.example.food_project.services.FoodService;
 import com.example.food_project.services.RestaurantService;
 import com.example.food_project.services.UserService;
@@ -30,6 +31,8 @@ public class ExploreController {
     FoodService foodService;
     @Autowired
     RestaurantService restaurantService;
+    @Autowired
+    CategoryService categoryService;
 
     @GetMapping()
     public ModelAndView index(){
@@ -39,6 +42,7 @@ public class ExploreController {
         var authentication = getContext().getAuthentication();
         mav.addObject(RESTAURANT_PARAM, restaurantService.getListRestaurant());
         mav.addObject(FOOD_PARAM, foodService.get6Food());
+        mav.addObject("listCategory", categoryService.getAll());
         if(client != null){
             var user = userService.getUser(authentication.getName());
             mav.addObject(CLIENT_PARAM, user);

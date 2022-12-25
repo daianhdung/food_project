@@ -34,6 +34,8 @@ public class FavoriteController {
     RestaurantService restaurantService;
     @Autowired
     RestaurantFavorService restaurantFavorService;
+    @Autowired
+    CategoryService categoryService;
 
     @GetMapping("")
     public ModelAndView favoriteRestaurant(){
@@ -41,6 +43,7 @@ public class FavoriteController {
         var mav = new ModelAndView(FAVORTITE_TEMP);
         var authentication = getContext().getAuthentication();
         mav.addObject("path", FAVORTITE_VIEW);
+        mav.addObject("listCategory", categoryService.getAll());
         if(client != null){
             var user = userService.getUser(authentication.getName());
             mav.addObject(CLIENT_PARAM, user);

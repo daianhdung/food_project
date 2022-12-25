@@ -65,6 +65,7 @@ public class ApplicationController {
         mav.addObject(CATEGORY_PARAM, categoryService.getExplorerCategory());
         mav.addObject(RESTAURANT_PARAM, restaurantService.getListRestaurant());
         mav.addObject(FOOD_PARAM, foodService.get6Food());
+        mav.addObject("listCategory", categoryService.getAll());
 
         if(client != null){
             var user = userService.getUser(authentication.getName());

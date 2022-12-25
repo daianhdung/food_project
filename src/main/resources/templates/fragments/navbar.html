@@ -47,12 +47,12 @@
   </ul>
 
   <div class="ml-auto">
-    <a href="search.html">
-      <form class="d-none d-sm-inline-block form-inline mx-2 my-2 my-md-0 mw-100 navbar-search">
+    <a>
+      <form method="get" th:action="@{/listing/food-search}" class="d-none d-sm-inline-block form-inline mx-2 my-2 my-md-0 mw-100 navbar-search">
         <div class="input-group">
-          <input type="text" class="form-control bg-light" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+          <input type="text" name="name" class="form-control bg-light" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
           <div class="input-group-append">
-            <button class="btn btn-primary" type="button">
+            <button class="btn btn-primary" type="submit">
               <i class="mdi mdi-magnify"></i>
             </button>
           </div>

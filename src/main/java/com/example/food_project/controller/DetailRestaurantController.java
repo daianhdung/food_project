@@ -2,6 +2,7 @@ package com.example.food_project.controller;
 
 import com.example.food_project.entity.RestaurantFavorEntity;
 import com.example.food_project.repository.RestaurantFavorRepository;
+import com.example.food_project.services.CategoryService;
 import com.example.food_project.services.RestaurantFavorService;
 import com.example.food_project.services.RestaurantService;
 import com.example.food_project.services.UserService;
@@ -32,12 +33,15 @@ public class DetailRestaurantController {
     RestaurantService restaurantService;
     @Autowired
     RestaurantFavorService restaurantFavorService;
+    @Autowired
+    CategoryService categoryService;
 
-    @GetMapping("/restaurant/{id}")
-    public ModelAndView restaurantDetail(@PathVariable("id") int restaurantId){
+    @GetMapping("/restaurant")
+    public ModelAndView restaurantDetail(int restaurantId){
         var client = authenticationUtil.getAccount();
         var mav = new ModelAndView(DETAIL_TEMP);
         var authentication = getContext().getAuthentication();
+        mav.addObject("listCategory", categoryService.getAll());
         if(client != null){
             var user = userService.getUser(authentication.getName());
             RestaurantFavorEntity restaurantFavor = restaurantFavorService.findByIdUserAndIdRestaurant(user.getId(), restaurantId);

@@ -6,6 +6,7 @@ import com.example.food_project.entity.FoodEntity;
 import com.example.food_project.repository.FoodRepository;
 import com.example.food_project.services.FoodService;
 import com.example.food_project.services.RestaurantService;
+import com.example.food_project.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +24,8 @@ public class FoodServiceImp implements FoodService {
     public List<FoodEntity> get6Food() {
         return foodRepository.get6Food();
     }
+    @Autowired
+    StringUtil stringUtil;
 
     @Override
     public long countAllFoodbyCategoryId(int categoryId) {
@@ -72,6 +75,24 @@ public class FoodServiceImp implements FoodService {
             foodDTO.setId(data.getId());
             foodDTO.setImg(data.getImage());
             foodDTO.setName(data.getName());
+            foodDTOList.add(foodDTO);
+        }
+        return foodDTOList;
+    }
+
+    @Override
+    public List<FoodDTO> findByKeyword(String name) {
+        List<FoodDTO> foodDTOList = new ArrayList<>();
+        List<FoodEntity> foodEntities = new ArrayList<>();
+        name = stringUtil.removeWhiteSpaceBeginAndEnd(name);
+        name = "%" + name + "%";
+        foodEntities = foodRepository.findByKeyword(name);
+        for(var data : foodEntities){
+            FoodDTO foodDTO = new FoodDTO();
+            foodDTO.setImg(data.getImage());
+            foodDTO.setName(data.getName());
+            RestaurantDetailDTO restaurantDTO = restaurantService.getDetailRestaurant(data.getId());
+            foodDTO.setRestaurantName(restaurantDTO.getTitle());
             foodDTOList.add(foodDTO);
         }
         return foodDTOList;
