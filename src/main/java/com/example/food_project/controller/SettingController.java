@@ -1,5 +1,6 @@
 package com.example.food_project.controller;
 
+import com.example.food_project.services.CategoryService;
 import com.example.food_project.services.UserService;
 import com.example.food_project.util.AuthenticationUtil;
 import com.example.food_project.util.PopupUtil;
@@ -25,6 +26,8 @@ public class SettingController {
     PopupUtil popupUtil;
     @Autowired
     UserService userService;
+    @Autowired
+    CategoryService categoryService;
 
     @GetMapping()
     public ModelAndView settingUser(){
@@ -32,6 +35,7 @@ public class SettingController {
         mav.addObject("path", SETTING_VIEW);
         var authentication = getContext().getAuthentication();
         var user = userService.getUser(authentication.getName());
+        mav.addObject("listCategory", categoryService.getAll());
         mav.addObject(CLIENT_PARAM, user);
         mav.addObject(SIGNIN_PARAM, true);
         _isMsgShow = popupUtil.showPopup(mav);

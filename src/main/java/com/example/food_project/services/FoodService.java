@@ -17,4 +17,5 @@ public interface FoodService {
     FoodDTO findById(int id);
 
     List<FoodDTO> findAllFavourite(List<Integer> foodIds);
+    List<FoodDTO> findByKeyword(String name);
 }

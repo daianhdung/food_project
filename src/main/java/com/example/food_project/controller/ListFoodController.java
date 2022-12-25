@@ -1,5 +1,6 @@
 package com.example.food_project.controller;
 
+import com.example.food_project.services.CategoryService;
 import com.example.food_project.services.FoodService;
 import com.example.food_project.services.UserFavorService;
 import com.example.food_project.services.UserService;
@@ -31,19 +32,41 @@ public class ListFoodController {
     UserService userService;
     @Autowired
     FoodService foodService;
+    @Autowired
+    CategoryService categoryService;
 
 
     @GetMapping()
     public ModelAndView listing(){
         var mav = new ModelAndView(LISTING_TEMP);
+        mav.addObject("listCategory", categoryService.getAll());
         return mav;
     }
 
-    @GetMapping("/category/{id}")
-    public ModelAndView listFoodbyCategory(@PathVariable("id") int categoryId){
+    @GetMapping("/category")
+    public ModelAndView listFoodbyCategory(int id){
         var authentication = getContext().getAuthentication();
         var client = authenticationUtil.getAccount();
         var mav = new ModelAndView(LISTING_TEMP);
+        mav.addObject("listCategory", categoryService.getAll());
+        mav.addObject("listFood", foodService.findAllbyCategory(id));
+        if(client != null){
+            var user = userService.getUser(authentication.getName());
+            mav.addObject(CLIENT_PARAM, user);
+            mav.addObject(SIGNIN_PARAM, true);
+        }else {
+            mav.addObject(SIGNIN_PARAM, false);
+        }
+        return mav;
+    }
+
+    @GetMapping("/food-search")
+    public ModelAndView listFoodbyCategory(String name){
+        var authentication = getContext().getAuthentication();
+        var client = authenticationUtil.getAccount();
+        var mav = new ModelAndView(LISTING_TEMP);
+        mav.addObject("listCategory", categoryService.getAll());
+        mav.addObject("listFood", foodService.findByKeyword(name));
         if(client != null){
             var user = userService.getUser(authentication.getName());
             mav.addObject(CLIENT_PARAM, user);
