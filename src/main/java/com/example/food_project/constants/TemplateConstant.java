@@ -15,4 +15,5 @@ public class TemplateConstant {
     public static final String FAVORTITE_TEMP = "favourities";
     public static final String EXPLORE_TEMP = "explore";
     public static final String ORDER_TEMP = "orders";
+    public static final String MESSAGE_TEMP = "messages";
 }

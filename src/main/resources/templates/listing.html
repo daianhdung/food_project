@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<link rel="icon" type="image/png" href="img/logo.png">
+<link rel="icon" type="image/png" th:href="@{/img/logo.png}">
 <title>Osahan Eat - Online Food Ordering Website HTML Template</title>
 
  <link th:href="@{/vendor/fontawesome-free/css/all.min.css}" rel="stylesheet" type="text/css">
@@ -43,7 +43,7 @@
 
 <div class="row">
 
-<a th:each="item: ${listFood}" href="#" class="text-decoration-none text-dark col-lg-3 col-md-6 mb-4" data-toggle="modal" data-target="#myitemsModal">
+<a th:each="item: ${listFood}" foodId="click" th:id="${item.getId()}" href="#" class="text-decoration-none text-dark col-lg-3 col-md-6 mb-4" data-toggle="modal" data-target="#myitemsModal">
 <img th:src="${'/img/' + item.getImg()}" class="img-fluid rounded">
 <div class="d-flex align-items-center mt-3 mb-2">
 <p th:text="${item.getName()}" class="text-black h6 m-0"></p>
@@ -247,6 +247,8 @@
 </div>
 </div>
 </div>
+</div>
+</div>
 
  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
  <script th:src="@{/js/index.js}"></script>
@@ -259,6 +261,7 @@
 <script th:src="@{/js/osahan.min.js}" type="86c5413ccc150e991645c889-text/javascript"></script>
 <script th:src="@{/js/rocket-loader.min.js}" data-cf-settings="86c5413ccc150e991645c889-|49" defer=""></script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon='{"rayId":"75c6f944bab87d56","version":"2022.10.3","r":1,"token":"dd471ab1978346bbb991feaa79e6ce5c","si":100}' crossorigin="anonymous"></script>
+ <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 <!-- Mirrored from askbootstrap.com/preview/osahan-eat/theme-sidebar/listing.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 19 Oct 2022 05:04:58 GMT -->

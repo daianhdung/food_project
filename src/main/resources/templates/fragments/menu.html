@@ -31,8 +31,8 @@
       <span>Orders</span></a>
   </li>
 
-  <li th:classappend="${path == '/messages' ? 'active' : ''}" class="nav-item">
-    <a class="nav-link d-flex" href="messages.html">
+  <li th:classappend="${path == '/message' ? 'active' : ''}" class="nav-item">
+    <a class="nav-link d-flex" th:href="@{/message}">
       <i class="mdi mdi-message-text-outline mr-2"></i>
       <span>Messages</span>
       <span class="rounded-circle bg-white text-primary ml-auto px-2 py-1">2</span></a>

@@ -17,4 +17,7 @@ public interface CategoryRepository extends JpaRepository<CategoryEntity, Intege
 
     List<CategoryEntity> findAll();
 
+    List<CategoryEntity> findByFoodsIsIn(List<FoodEntity> foods);
+
+    List<CategoryEntity> findByIdIsIn(List<Integer> listId);
 }
