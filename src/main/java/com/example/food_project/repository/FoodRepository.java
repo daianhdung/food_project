@@ -25,4 +25,8 @@ public interface FoodRepository extends JpaRepository<FoodEntity, Integer> {
 
     @Query(value = "SELECT * FROM food WHERE name LIKE ?1 ", nativeQuery = true)
     List<FoodEntity> findByKeyword(String name);
+
+    List<FoodEntity> findByRestaurantId(int idRestaurant);
+
+    List<FoodEntity> findByRestaurantIdAndCategoryId(int idRestaurant, int idCategory);
 }

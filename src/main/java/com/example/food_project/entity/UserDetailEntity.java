@@ -12,7 +12,7 @@ public class UserDetailEntity {
     @Column(name = "address")
     private String addresss;
 
-    @Column(name = "moblie_phone")
+    @Column(name = "mobile_phone")
     private String mobilePhone;
 
     @Column(name = "street")

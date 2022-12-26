@@ -42,6 +42,7 @@ public class FoodServiceImp implements FoodService {
         }
         for(var data : foodEntities){
             FoodDTO foodDTO = new FoodDTO();
+            foodDTO.setId(data.getId());
             foodDTO.setImg(data.getImage());
             foodDTO.setName(data.getName());
             RestaurantDetailDTO restaurantDTO = restaurantService.getDetailRestaurant(data.getId());
@@ -83,18 +84,40 @@ public class FoodServiceImp implements FoodService {
     @Override
     public List<FoodDTO> findByKeyword(String name) {
         List<FoodDTO> foodDTOList = new ArrayList<>();
-        List<FoodEntity> foodEntities = new ArrayList<>();
         name = stringUtil.removeWhiteSpaceBeginAndEnd(name);
         name = "%" + name + "%";
-        foodEntities = foodRepository.findByKeyword(name);
+        List<FoodEntity> foodEntities = foodRepository.findByKeyword(name);
         for(var data : foodEntities){
             FoodDTO foodDTO = new FoodDTO();
+            foodDTO.setId(data.getId());
             foodDTO.setImg(data.getImage());
             foodDTO.setName(data.getName());
             RestaurantDetailDTO restaurantDTO = restaurantService.getDetailRestaurant(data.getId());
             foodDTO.setRestaurantName(restaurantDTO.getTitle());
             foodDTOList.add(foodDTO);
         }
+        return foodDTOList;
+    }
+
+    @Override
+    public List<FoodEntity> findByRestaurantId(int idRestaurant) {
+        return foodRepository.findByRestaurantId(idRestaurant);
+    }
+
+    @Override
+    public List<FoodDTO> findByRestaurantIdAndCategoryId(int idRestaurant, int idCategory) {
+        List<FoodDTO> foodDTOList = new ArrayList<>();
+        List<FoodEntity> foodEntities = foodRepository.findByRestaurantIdAndCategoryId(idRestaurant, idCategory);
+        for(var data : foodEntities){
+            FoodDTO foodDTO = new FoodDTO();
+            foodDTO.setId(data.getId());
+            foodDTO.setImg(data.getImage());
+            foodDTO.setName(data.getName());
+            RestaurantDetailDTO restaurantDTO = restaurantService.getDetailRestaurant(data.getId());
+            foodDTO.setRestaurantName(restaurantDTO.getTitle());
+            foodDTOList.add(foodDTO);
+        }
+
         return foodDTOList;
     }
 }
